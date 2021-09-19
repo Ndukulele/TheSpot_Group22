@@ -67,6 +67,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bootstrap\css\bootstrap.min.css" />
+    <Content Include="bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="bootstrap\js\bootstrap.min.js" />
+    <Content Include="bootstrap\js\popper.min.js" />
+    <Content Include="css\master.css" />
+    <Content Include="css\Menu.css" />
+    <Content Include="img\employee.png" />
+    <Content Include="img\prof.png" />
+    <Content Include="img\profile.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

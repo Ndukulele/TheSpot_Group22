@@ -1,0 +1,42 @@
+﻿#tables
+{
+    font-family: "Trebuchet MS" , Arial, Helvetica, sans-serif;
+    border-collapse:collapse;
+}
+
+    #tables td, th
+    {
+        padding: 8px;
+    }
+
+    #tables th
+    {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+    }
+
+#menu_discDiv
+{
+
+}
+#orderDetailDiv
+{
+    float:right;
+}
+#menuDiv
+{
+
+}
+#menu_discDiv p
+{
+    line-height: 1.5em;
+    font-size: 20px;
+}
+
+#InLine
+{
+    display: inline;
+}

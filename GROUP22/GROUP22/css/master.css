@@ -1,0 +1,14 @@
+﻿.footerlinks
+{
+    color: white;
+    text-decoration: none !important;
+}
+    .footerlinks:hover 
+    {
+        color: yellow;
+    }
+#footer1
+{
+    background-color:saddlebrown;
+    text-align:center;
+}
