@@ -33,75 +33,57 @@ namespace GROUP22
         protected global::System.Web.UI.WebControls.Button btnCancelOrder;
 
         /// <summary>
-        /// Label1 control.
+        /// lblOrderNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label lblOrderNo;
 
         /// <summary>
-        /// Label2 control.
+        /// lblCustomerName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label lblCustomerName;
 
         /// <summary>
-        /// lsOrdersStatus control.
+        /// gdOrderStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lsOrdersStatus;
+        protected global::System.Web.UI.WebControls.GridView gdOrderStatus;
 
         /// <summary>
-        /// btnRefresh control.
+        /// btnOrderProcessing control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRefresh;
+        protected global::System.Web.UI.WebControls.Button btnOrderProcessing;
 
         /// <summary>
-        /// btnSubmit control.
+        /// btnOrderReady control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmit;
+        protected global::System.Web.UI.WebControls.Button btnOrderReady;
 
         /// <summary>
-        /// btnSubmit0 control.
+        /// btnOrderFulfilled control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmit0;
-
-        /// <summary>
-        /// btnSubmit1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmit1;
-
-        /// <summary>
-        /// btnSubmit2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmit2;
+        protected global::System.Web.UI.WebControls.Button btnOrderFulfilled;
     }
 }

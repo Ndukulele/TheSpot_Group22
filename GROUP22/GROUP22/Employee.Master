@@ -15,7 +15,7 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server" style="background-color:violet; " >
+    <form id="form1" runat="server" style="background-color:white; " >
         <div>
             <nav class="navbar navbar-expand-lg navbar-light " ">
                
@@ -23,7 +23,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background-color:darkviolet">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background-color:lightyellow">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item active">
                             <a class="nav-link" href="Home.aspx"> Home </a>
