@@ -73,7 +73,6 @@
     <Content Include="bootstrap\js\popper.min.js" />
     <Content Include="css\master.css" />
     <Content Include="css\Menu.css" />
-    <Content Include="CustomerOrderInquiry.aspx" />
     <Content Include="EmployeeOrdersSite.aspx" />
     <Content Include="img\employee.png" />
     <Content Include="img\prof.png" />
@@ -87,13 +86,6 @@
     </Compile>
     <Compile Include="Customer.Master.designer.cs">
       <DependentUpon>Customer.Master</DependentUpon>
-    </Compile>
-    <Compile Include="CustomerOrderInquiry.aspx.cs">
-      <DependentUpon>CustomerOrderInquiry.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CustomerOrderInquiry.aspx.designer.cs">
-      <DependentUpon>CustomerOrderInquiry.aspx</DependentUpon>
     </Compile>
     <Compile Include="Employee.Master.cs">
       <DependentUpon>Employee.Master</DependentUpon>
