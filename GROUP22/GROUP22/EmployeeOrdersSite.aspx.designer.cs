@@ -24,15 +24,6 @@ namespace GROUP22
         protected global::System.Web.UI.WebControls.ListBox lsOrders;
 
         /// <summary>
-        /// btnCancelOrder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelOrder;
-
-        /// <summary>
         /// lblOrderNo control.
         /// </summary>
         /// <remarks>
@@ -40,15 +31,6 @@ namespace GROUP22
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblOrderNo;
-
-        /// <summary>
-        /// lblCustomerName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCustomerName;
 
         /// <summary>
         /// gdOrderStatus control.
@@ -85,5 +67,14 @@ namespace GROUP22
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnOrderFulfilled;
+
+        /// <summary>
+        /// btnCancelOrder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancelOrder;
     }
 }
