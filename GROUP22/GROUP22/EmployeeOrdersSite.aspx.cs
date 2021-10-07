@@ -47,13 +47,22 @@ namespace GROUP22
         {
             sqlDeleteOrder($"TableOrders WHERE OrderId = '{lsOrders.SelectedValue.ToString().Substring(6)}'");
             lsOrders.SelectedValue.Remove(0);
+            lsOrders.Items.Clear();
+            sqlSelect("OrderId", "TableOrders", "addList");
 
-            if(lsOrders.Items.Count != 0)
+            if (lsOrders.Items.Count != 0)
             {
                 lsOrders.SelectedIndex = 0;
+                lblOrderNo.Text = lsOrders.SelectedValue.ToString();
                 populateGridView();
                 enableButtons();
             }
+            else
+            {
+                lblOrderNo.Text = null;
+            }
+
+            //if(lsOrders.Items.Count == 0)
         }
 
         public void enableButtons()
@@ -72,6 +81,14 @@ namespace GROUP22
 
             populateGridView();
             btnOrderProcessing.Enabled = false;
+
+            foreach (GridViewRow row in gdOrderStatus.Rows)
+            {
+                Button orderStatus = row.FindControl("Processing") as Button;
+
+                //Finally retrieve the data like your normal control
+                string labelText = orderStatus.Text;
+            }
         }
 
         protected void btnOrderReady_Click(object sender, EventArgs e)
