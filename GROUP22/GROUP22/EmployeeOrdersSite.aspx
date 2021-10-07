@@ -38,7 +38,7 @@
                 Order number:
                 <asp:Label ID="lblOrderNo" runat="server" Text="lblOrderNo" Font-Bold="True"></asp:Label>
                 <br />
-                <asp:GridView ID="gdOrderStatus" runat="server" ShowFooter="True" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2">
+                <asp:GridView ID="gdOrderStatus" runat="server" ShowFooter="True" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" ForeColor="Blue" HorizontalAlign="Center">
                     <AlternatingRowStyle BorderWidth="1px" />
                     <EditRowStyle BorderStyle="Solid" BorderWidth="1px" />
                     <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />

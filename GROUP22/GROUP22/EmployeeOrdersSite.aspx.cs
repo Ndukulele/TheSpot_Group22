@@ -11,7 +11,7 @@ namespace GROUP22
 {
     public partial class EmployeeOrdersSite : System.Web.UI.Page
     {
-        public string connStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=\\143.160.81.13\CTX_Redirected_Data$\32445385\Documents\GitHub\TheSpot_Group22\GROUP22\GROUP22\App_Data\temp.mdf;Integrated Security=True";
+        public string connStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\KAYMAR\Documents\GitHub\TheSpot_Group22\GROUP22\GROUP22\App_Data\temp.mdf;Integrated Security=True";
         public SqlConnection conn;
         public SqlCommand comm;
         public SqlDataReader dr;
@@ -27,10 +27,18 @@ namespace GROUP22
             {
                 sqlSelect("OrderId", "TableOrders", "addList");
 
-                //populate gridview
-                lsOrders.SelectedIndex = 0;
-                lblOrderNo.Text = lsOrders.SelectedValue.ToString();
-                populateGridView();
+                if(lsOrders.Items.Count != 0)
+                {
+                    //populate gridview
+                    lsOrders.SelectedIndex = 0;
+                    lblOrderNo.Text = lsOrders.SelectedValue.ToString();
+                    populateGridView();
+                }
+                else
+                {
+                    lblOrderNo.Text = null;
+                    disableButtons();
+                }
             }
         }
 
@@ -72,6 +80,16 @@ namespace GROUP22
             btnOrderProcessing.Enabled = true;
             btnOrderReady.Enabled = true;
             btnOrderFulfilled.Enabled = true;
+        }
+
+        public void disableButtons()
+        {
+            //gdOrderStatus.SelectedIndex = 0;
+            //if(btnOrderProcessing.Enabled == false && gdOrderStatus.SelectedValue != )
+            btnOrderProcessing.Enabled = false;
+            btnOrderReady.Enabled = false;
+            btnOrderFulfilled.Enabled = false;
+            btnCancelOrder.Enabled = false;
         }
 
         protected void btnOrderProcessing_Click(object sender, EventArgs e)
