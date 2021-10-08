@@ -67,9 +67,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\temp.mdf" />
-    <Content Include="App_Data\temp_log.ldf">
-      <DependentUpon>temp.mdf</DependentUpon>
+    <Content Include="App_Data\TheSpotDatabase.mdf" />
+    <Content Include="App_Data\TheSpotDatabase_log.ldf">
+      <DependentUpon>TheSpotDatabase.mdf</DependentUpon>
     </Content>
     <Content Include="bootstrap\css\bootstrap.min.css" />
     <Content Include="bootstrap\js\bootstrap.bundle.min.js" />
@@ -81,6 +81,9 @@
     <Content Include="img\employee.png" />
     <Content Include="img\prof.png" />
     <Content Include="img\profile.png" />
+    <Content Include="Order Inquiries.aspx" />
+    <Content Include="Order Notification.aspx" />
+    <Content Include="Registration.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -105,7 +108,29 @@
     <Compile Include="EmployeeOrdersSite.aspx.designer.cs">
       <DependentUpon>EmployeeOrdersSite.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Order Inquiries.aspx.cs">
+      <DependentUpon>Order Inquiries.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Order Inquiries.aspx.designer.cs">
+      <DependentUpon>Order Inquiries.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Order Notification.aspx.cs">
+      <DependentUpon>Order Notification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Order Notification.aspx.designer.cs">
+      <DependentUpon>Order Notification.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registration.aspx.cs">
+      <DependentUpon>Registration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registration.aspx.designer.cs">
+      <DependentUpon>Registration.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Employee.Master" />

@@ -14,10 +14,7 @@
             width: 185px;
             font-size: xx-large;
         }
-        .auto-style6 {
-            font-weight: bold;
-        }
-    </style>
+        </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table style="width:100%;">
@@ -29,17 +26,21 @@
         <tr>
             <td class="auto-style1">&nbsp;</td>
             <td class="auto-style4"><strong>Orders</strong><br />
-                Order Number<br />
+                Order number<br />
                 <asp:ListBox ID="lsOrders" runat="server" Height="334px" Width="173px" AutoPostBack="True" OnSelectedIndexChanged="lsOrders_SelectedIndexChanged">
                 </asp:ListBox>
-                <br />
             </td>
-            <td class="auto-style3"><strong>Order d</strong><span class="auto-style6">etails</span><br />
-                Order number:
-                <asp:Label ID="lblOrderNo" runat="server" Text="lblOrderNo" Font-Bold="True"></asp:Label>
+            <td class="auto-style3">
+                <asp:Label ID="lblOrderDetails" runat="server" Text="Order details" Font-Bold="True"></asp:Label>
+                <br />
+                <asp:Label ID="lblOrderLabel" runat="server" Text="Order number:" Font-Bold="False"></asp:Label>
+                &nbsp;<asp:Label ID="lblOrderNo" runat="server" Text="lblOrderNo" Font-Bold="True"></asp:Label>
                 <br />
                 <asp:GridView ID="gdOrderStatus" runat="server" ShowFooter="True" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" ForeColor="Blue" HorizontalAlign="Center">
                     <AlternatingRowStyle BorderWidth="1px" />
+                    <Columns>
+                        <asp:CommandField DeleteText="Cancel order" ShowDeleteButton="True" ShowHeader="True" />
+                    </Columns>
                     <EditRowStyle BorderStyle="Solid" BorderWidth="1px" />
                     <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
                     <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
@@ -52,6 +53,7 @@
                     <SortedDescendingHeaderStyle BackColor="#93451F" />
                 </asp:GridView>
                 <br />
+                <br />
                 <asp:Button ID="btnOrderProcessing" runat="server" Text="Processing" OnClick="btnOrderProcessing_Click" />
                 <br />
                 <br />
@@ -60,8 +62,6 @@
                 <br />
                 <asp:Button ID="btnOrderFulfilled" runat="server" Text="Fulfilled" Width="99px" Height="29px" OnClick="btnOrderFulfilled_Click" />
                 <br />
-                <br />
-                <asp:Button ID="btnCancelOrder" runat="server" Text="Cancel order" OnClick="btnCancelOrder_Click" Height="29px" Width="99px" />
             </td>
         </tr>
         <tr>
