@@ -1,0 +1,110 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Data;
+
+namespace TheSpotGroup22
+{
+    public partial class CustomerInfo : System.Web.UI.Page
+    {
+        string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dell\Documents\CMPG 223\TheSpot\TheSpotGroup22\TheSpotGroup22\App_Data\Restaurant.mdf;Integrated Security=True";
+        SqlConnection conn;
+        SqlCommand comm;
+        SqlDataAdapter adapt;
+        DataSet ds;
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            fill();
+        }
+
+        public void fill()
+        {
+
+            conn = new SqlConnection(constr);
+            try
+            {
+                conn.Open();
+                adapt = new SqlDataAdapter();
+                ds = new DataSet();
+
+                string sql = "SELECT customerId, customerName, customerSurname, phoneNumber, email, dateOfBirth From tblCustomerDetails";
+                comm = new SqlCommand(sql, conn);
+
+                comm = new SqlCommand(sql, conn);
+                adapt.SelectCommand = comm;
+                adapt.Fill(ds);
+
+                gvSCustomerInfo.DataSource = ds;
+                gvSCustomerInfo.DataBind();
+
+                conn.Close();
+            }
+            catch (Exception error)
+            {
+                lblError.Text = error.Message;
+            }
+        }
+
+        protected void gvSCustomerInfo_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            int id = Convert.ToInt32(gvSCustomerInfo.DataKeys[e.RowIndex].Value.ToString());
+
+            conn = new SqlConnection(constr);
+            try
+            {
+                conn.Open();
+                adapt = new SqlDataAdapter();
+                ds = new DataSet();
+
+                string sql = "DELETE From tblCustomerDetails WHERE customerId = '" + id + "'";
+                comm = new SqlCommand(sql, conn);
+                int t = comm.ExecuteNonQuery();
+
+                if (t > 0)
+                {
+                    gvSCustomerInfo.EditIndex = -1;
+                    fill();
+
+                }
+
+                conn.Close();
+            }
+            catch (Exception error)
+            {
+                lblError.Text = error.Message;
+            }
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            conn = new SqlConnection(constr);
+            try
+            {
+                conn.Open();
+                adapt = new SqlDataAdapter();
+                ds = new DataSet();
+
+                string sql = "SELECT * FROM tblCustomerDetails WHERE email LIKE '%" + txtSearch.Text + "%'";
+                comm = new SqlCommand(sql, conn);
+                adapt.SelectCommand = comm;
+                adapt.Fill(ds);
+
+                gvSCustomerInfo.DataSource = ds;
+                gvSCustomerInfo.DataBind();
+
+
+            }
+            catch (Exception error)
+            {
+                lblError.Text = error.Message;
+
+            }
+        }
+    }
+}
