@@ -38,9 +38,6 @@
                 <br />
                 <asp:GridView ID="gdOrderStatus" runat="server" ShowFooter="True" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" ForeColor="Blue" HorizontalAlign="Center">
                     <AlternatingRowStyle BorderWidth="1px" />
-                    <Columns>
-                        <asp:CommandField DeleteText="Cancel order" ShowDeleteButton="True" ShowHeader="True" />
-                    </Columns>
                     <EditRowStyle BorderStyle="Solid" BorderWidth="1px" />
                     <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
                     <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />

@@ -77,13 +77,13 @@
     <Content Include="bootstrap\js\popper.min.js" />
     <Content Include="css\master.css" />
     <Content Include="css\Menu.css" />
+    <Content Include="CustomerOrderInquiry.aspx" />
     <Content Include="EmployeeOrdersSite.aspx" />
     <Content Include="img\employee.png" />
     <Content Include="img\prof.png" />
     <Content Include="img\profile.png" />
-    <Content Include="Order Inquiries.aspx" />
-    <Content Include="Order Notification.aspx" />
-    <Content Include="Registration.aspx" />
+    <Content Include="OrderNotification.aspx" />
+    <Content Include="RegistrationNotification.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -93,6 +93,13 @@
     </Compile>
     <Compile Include="Customer.Master.designer.cs">
       <DependentUpon>Customer.Master</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerOrderInquiry.aspx.cs">
+      <DependentUpon>CustomerOrderInquiry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerOrderInquiry.aspx.designer.cs">
+      <DependentUpon>CustomerOrderInquiry.aspx</DependentUpon>
     </Compile>
     <Compile Include="Employee.Master.cs">
       <DependentUpon>Employee.Master</DependentUpon>
@@ -108,28 +115,21 @@
     <Compile Include="EmployeeOrdersSite.aspx.designer.cs">
       <DependentUpon>EmployeeOrdersSite.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Order Inquiries.aspx.cs">
-      <DependentUpon>Order Inquiries.aspx</DependentUpon>
+    <Compile Include="OrderNotification.aspx.cs">
+      <DependentUpon>OrderNotification.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Order Inquiries.aspx.designer.cs">
-      <DependentUpon>Order Inquiries.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Order Notification.aspx.cs">
-      <DependentUpon>Order Notification.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Order Notification.aspx.designer.cs">
-      <DependentUpon>Order Notification.aspx</DependentUpon>
+    <Compile Include="OrderNotification.aspx.designer.cs">
+      <DependentUpon>OrderNotification.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registration.aspx.cs">
-      <DependentUpon>Registration.aspx</DependentUpon>
+    <Compile Include="RegistrationNotification.aspx.cs">
+      <DependentUpon>RegistrationNotification.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Registration.aspx.designer.cs">
-      <DependentUpon>Registration.aspx</DependentUpon>
+    <Compile Include="RegistrationNotification.aspx.designer.cs">
+      <DependentUpon>RegistrationNotification.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

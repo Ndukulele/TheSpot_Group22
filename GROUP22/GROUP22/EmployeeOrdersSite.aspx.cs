@@ -77,7 +77,7 @@ namespace GROUP22
             //evaluate order status and show/hide relevant buttons
             if(gdOrderStatus.Rows.Count != 0)
             {
-                string status = gdOrderStatus.Rows[0].Cells[1].Text;
+                string status = gdOrderStatus.Rows[0].Cells[0].Text;
 
                 if(status == "Placed")
                 {
@@ -124,7 +124,7 @@ namespace GROUP22
         protected void btnOrderProcessing_Click(object sender, EventArgs e)
         {
             //sql update query
-            sqlQueries("UPDATE TableOrders", "SET status = 'Processing'" +
+            sqlQueries("UPDATE TableOrderDetails", "SET status = 'Processing'" +
                 $" WHERE orderId = '{lsOrders.SelectedValue.ToString().Substring(6)}'", 
                 "update");
 
@@ -135,7 +135,7 @@ namespace GROUP22
         protected void btnOrderReady_Click(object sender, EventArgs e)
         {
             //sql update query
-            sqlQueries("UPDATE TableOrders", "SET status = 'Ready'" +
+            sqlQueries("UPDATE TableOrderDetails", "SET status = 'Ready'" +
                 $" WHERE orderId = '{lsOrders.SelectedValue.ToString().Substring(6)}'",
                 "update");
 
@@ -146,7 +146,7 @@ namespace GROUP22
         protected void btnOrderFulfilled_Click(object sender, EventArgs e)
         {
             //sql update query
-            sqlQueries("UPDATE TableOrders", "SET status = 'Fulfilled'" +
+            sqlQueries("UPDATE TableOrderDetails", "SET status = 'Fulfilled'" +
                 $" WHERE orderId = '{lsOrders.SelectedValue.ToString().Substring(6)}'",
                 "update");
 
@@ -155,10 +155,9 @@ namespace GROUP22
 
             //sql insert query into reports, sql delete query, update lisbox
             sqlQueries("INSERT INTO TableReports(orderId, customerId, productId, employeeId, status)",
-                "SELECT a.orderId, a.customerId, a.productId, a.employeeId, b.status " +
-                "FROM TableOrderDetails a " +
-                "INNER JOIN TableOrders b ON a.orderId = b.orderId " +
-                $"WHERE b.orderId = '{lsOrders.SelectedValue.ToString().Substring(6)}'",
+                "SELECT orderId, customerId, productId, employeeId, status " +
+                "FROM TableOrderDetails " +
+                $"WHERE orderId = '{lsOrders.SelectedValue.ToString().Substring(6)}'",
                 "insert");
 
             sqlQueries("DELETE ", 
