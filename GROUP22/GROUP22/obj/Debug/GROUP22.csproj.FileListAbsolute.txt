@@ -52,8 +52,8 @@ C:\Users\Dell\Documents\GitHub\TheSpot_Group22\GROUP22\GROUP22\bin\roslyn\VBCSCo
 C:\Users\Dell\Documents\GitHub\TheSpot_Group22\GROUP22\GROUP22\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\Dell\Documents\GitHub\TheSpot_Group22\GROUP22\GROUP22\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Dell\Documents\GitHub\TheSpot_Group22\GROUP22\GROUP22\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Dell\Documents\GitHub\TheSpot_Group22\GROUP22\GROUP22\obj\Debug\GROUP22.csprojAssemblyReference.cache
 C:\Users\Dell\Documents\GitHub\TheSpot_Group22\GROUP22\GROUP22\obj\Debug\GROUP22.csproj.CoreCompileInputs.cache
 C:\Users\Dell\Documents\GitHub\TheSpot_Group22\GROUP22\GROUP22\obj\Debug\GROUP22.csproj.CopyComplete
 C:\Users\Dell\Documents\GitHub\TheSpot_Group22\GROUP22\GROUP22\obj\Debug\GROUP22.dll
 C:\Users\Dell\Documents\GitHub\TheSpot_Group22\GROUP22\GROUP22\obj\Debug\GROUP22.pdb
+C:\Users\Dell\Documents\GitHub\TheSpot_Group22\GROUP22\GROUP22\obj\Debug\GROUP22.csproj.AssemblyReference.cache
