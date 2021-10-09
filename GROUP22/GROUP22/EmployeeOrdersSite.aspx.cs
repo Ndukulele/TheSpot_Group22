@@ -58,12 +58,16 @@ namespace GROUP22
             if (lsOrders.SelectedIndex >= 0)
             {
                 sqlQueries(
-                    "SELECT TableOrders.status as Status, " +
-                    "TableCustomers.customerName as Customer, " +
-                    "Format(TableOrders.dateOfOrder, 'yyyy-MM-dd, hh:mm') as Date",
-                    "FROM TableOrders INNER JOIN TableCustomers " +
-                    "ON TableOrders.customerId = TableCustomers.customerId " +
-                    $"WHERE orderId = '{lsOrders.SelectedValue.ToString().Substring(6)}'",
+                    "SELECT status as 'Order status', " +
+                    "b.customerName as 'Customer name', " +
+                    "FORMAT(dateOfOrder, 'yyyy-MM-dd hh:mm') as 'Date order placed', " +
+                    "productName as 'Product name', " +
+                    "productPrice as 'Product price', " +
+                    "productQty as 'Product quantity', " +
+                    "orderTotalPrice as 'Total price'",
+                    "FROM TableOrderDetails a " +
+                    "INNER JOIN TableCustomers b ON a.customerId = b.customerId " +
+                    $"WHERE a.orderId = '{lsOrders.SelectedValue.ToString().Substring(6)}'",
                     "gridView");
             }
         }
