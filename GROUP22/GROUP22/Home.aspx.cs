@@ -10,22 +10,23 @@ using System.Data;
 
 namespace TheSpotGroup22
 {
-    public partial class CustomerInfo : System.Web.UI.Page
+    public partial class Home : System.Web.UI.Page
     {
         string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dell\Documents\CMPG 223\TheSpot\TheSpotGroup22\TheSpotGroup22\App_Data\Restaurant.mdf;Integrated Security=True";
+       
         SqlConnection conn;
         SqlCommand comm;
         SqlDataAdapter adapt;
         DataSet ds;
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            fill();
+            noCustomers();
+            noEmployees();
+            noBoookings();
         }
 
-        public void fill()
+        public void noCustomers()
         {
-
             conn = new SqlConnection(constr);
             try
             {
@@ -33,17 +34,17 @@ namespace TheSpotGroup22
                 adapt = new SqlDataAdapter();
                 ds = new DataSet();
 
-                string sql = "SELECT customerId, customerName, customerSurname, phoneNumber, email, dateOfBirth From tblCustomerDetails";
+                string sql = "SELECT count(customerId) From tblCustomerDetails";
                 comm = new SqlCommand(sql, conn);
 
-                comm = new SqlCommand(sql, conn);
-                adapt.SelectCommand = comm;
-                adapt.Fill(ds);
+                string customers = comm.ExecuteScalar().ToString();
 
-                gvSCustomerInfo.DataSource = ds;
-                gvSCustomerInfo.DataBind();
+                lblCustomers.Text = customers;
 
                 conn.Close();
+
+
+
             }
             catch (Exception error)
             {
@@ -51,10 +52,8 @@ namespace TheSpotGroup22
             }
         }
 
-        protected void gvSCustomerInfo_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        public void noEmployees()
         {
-            int id = Convert.ToInt32(gvSCustomerInfo.DataKeys[e.RowIndex].Value.ToString());
-
             conn = new SqlConnection(constr);
             try
             {
@@ -62,18 +61,15 @@ namespace TheSpotGroup22
                 adapt = new SqlDataAdapter();
                 ds = new DataSet();
 
-                string sql = "DELETE From tblCustomerDetails WHERE customerId = '" + id + "'";
+                string sql = "SELECT count(employeeId) From tblEmployeeDetails";
                 comm = new SqlCommand(sql, conn);
-                int t = comm.ExecuteNonQuery();
 
-                if (t > 0)
-                {
-                    gvSCustomerInfo.EditIndex = -1;
-                    fill();
+                string employees = comm.ExecuteScalar().ToString();
 
-                }
+                lblEployees.Text = employees;
 
                 conn.Close();
+
             }
             catch (Exception error)
             {
@@ -81,7 +77,7 @@ namespace TheSpotGroup22
             }
         }
 
-        protected void btnSearch_Click(object sender, EventArgs e)
+        public void noBoookings()
         {
             conn = new SqlConnection(constr);
             try
@@ -90,20 +86,19 @@ namespace TheSpotGroup22
                 adapt = new SqlDataAdapter();
                 ds = new DataSet();
 
-                string sql = "SELECT * FROM tblCustomerDetails WHERE email LIKE '%" + txtSearch.Text + "%'";
+                string sql = "SELECT count(bookingId) From tblBookingDetails";
                 comm = new SqlCommand(sql, conn);
-                adapt.SelectCommand = comm;
-                adapt.Fill(ds);
 
-                gvSCustomerInfo.DataSource = ds;
-                gvSCustomerInfo.DataBind();
+                string bookings = comm.ExecuteScalar().ToString();
 
+                lblBookings.Text = bookings;
+
+                conn.Close();
 
             }
             catch (Exception error)
             {
                 lblError.Text = error.Message;
-
             }
         }
     }

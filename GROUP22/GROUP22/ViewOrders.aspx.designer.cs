@@ -11,70 +11,79 @@ namespace TheSpotGroup22
 {
 
 
-    public partial class Menu
+    public partial class ViewOrders
     {
 
         /// <summary>
-        /// lblNoOfItems control.
+        /// lsOrders control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNoOfItems;
+        protected global::System.Web.UI.WebControls.ListBox lsOrders;
 
         /// <summary>
-        /// lblTotalPrice control.
+        /// lblOrderDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalPrice;
+        protected global::System.Web.UI.WebControls.Label lblOrderDetails;
 
         /// <summary>
-        /// btnViewMyOrder control.
+        /// lblOrderLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnViewMyOrder;
+        protected global::System.Web.UI.WebControls.Label lblOrderLabel;
 
         /// <summary>
-        /// Label1 control.
+        /// lblOrderNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label lblOrderNo;
 
         /// <summary>
-        /// txtSearch control.
+        /// gdOrderStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearch;
+        protected global::System.Web.UI.WebControls.GridView gdOrderStatus;
 
         /// <summary>
-        /// btnSearch control.
+        /// btnOrderProcessing control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearch;
+        protected global::System.Web.UI.WebControls.Button btnOrderProcessing;
 
         /// <summary>
-        /// rpt control.
+        /// btnOrderReady control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rpt;
+        protected global::System.Web.UI.WebControls.Button btnOrderReady;
+
+        /// <summary>
+        /// btnOrderFulfilled control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnOrderFulfilled;
     }
 }

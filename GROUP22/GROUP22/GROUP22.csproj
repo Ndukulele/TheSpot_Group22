@@ -67,25 +67,67 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Bookings.aspx" />
     <Content Include="bootstrap\css\bootstrap.min.css" />
     <Content Include="bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="bootstrap\js\bootstrap.min.js" />
     <Content Include="bootstrap\js\popper.min.js" />
+    <Content Include="Cart.aspx" />
     <Content Include="css\master.css" />
     <Content Include="css\Menu.css" />
+    <Content Include="CustomerInfo.aspx" />
+    <Content Include="EditMenu.aspx" />
+    <Content Include="EmployeeLogin.aspx" />
+    <Content Include="EmployeeSignUp.aspx" />
+    <Content Include="FoodItems.aspx" />
+    <Content Include="Home.aspx" />
     <Content Include="img\employee.png" />
     <Content Include="img\prof.png" />
     <Content Include="img\profile.png" />
-    <Content Include="OrderNotification.aspx" />
+    <Content Include="Menu.aspx" />
+    <Content Include="Profile.aspx" />
+    <Content Include="SignUp.aspx" />
+    <Content Include="TableBookings.aspx" />
+    <Content Include="UserLogin.aspx" />
+    <Content Include="ViewBookings.aspx" />
+    <Content Include="ViewOrders.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Customer.Master.cs">
-      <DependentUpon>Customer.Master</DependentUpon>
+    <Compile Include="Bookings.aspx.cs">
+      <DependentUpon>Bookings.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Customer.Master.designer.cs">
-      <DependentUpon>Customer.Master</DependentUpon>
+    <Compile Include="Bookings.aspx.designer.cs">
+      <DependentUpon>Bookings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cart.aspx.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cart.aspx.designer.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerInfo.aspx.cs">
+      <DependentUpon>CustomerInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerInfo.aspx.designer.cs">
+      <DependentUpon>CustomerInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerSite.Master.cs">
+      <DependentUpon>CustomerSite.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerSite.Master.designer.cs">
+      <DependentUpon>CustomerSite.Master</DependentUpon>
+    </Compile>
+    <Compile Include="EditMenu.aspx.cs">
+      <DependentUpon>EditMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditMenu.aspx.designer.cs">
+      <DependentUpon>EditMenu.aspx</DependentUpon>
     </Compile>
     <Compile Include="Employee.Master.cs">
       <DependentUpon>Employee.Master</DependentUpon>
@@ -94,18 +136,96 @@
     <Compile Include="Employee.Master.designer.cs">
       <DependentUpon>Employee.Master</DependentUpon>
     </Compile>
-    <Compile Include="OrderNotification.aspx.cs">
-      <DependentUpon>OrderNotification.aspx</DependentUpon>
+    <Compile Include="EmployeeLogin.aspx.cs">
+      <DependentUpon>EmployeeLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="OrderNotification.aspx.designer.cs">
-      <DependentUpon>OrderNotification.aspx</DependentUpon>
+    <Compile Include="EmployeeLogin.aspx.designer.cs">
+      <DependentUpon>EmployeeLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeSignUp.aspx.cs">
+      <DependentUpon>EmployeeSignUp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EmployeeSignUp.aspx.designer.cs">
+      <DependentUpon>EmployeeSignUp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeSite.Master.cs">
+      <DependentUpon>EmployeeSite.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EmployeeSite.Master.designer.cs">
+      <DependentUpon>EmployeeSite.Master</DependentUpon>
+    </Compile>
+    <Compile Include="FoodItems.aspx.cs">
+      <DependentUpon>FoodItems.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FoodItems.aspx.designer.cs">
+      <DependentUpon>FoodItems.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu.aspx.cs">
+      <DependentUpon>Menu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu.aspx.designer.cs">
+      <DependentUpon>Menu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SignUp.aspx.cs">
+      <DependentUpon>SignUp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SignUp.aspx.designer.cs">
+      <DependentUpon>SignUp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TableBookings.aspx.cs">
+      <DependentUpon>TableBookings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TableBookings.aspx.designer.cs">
+      <DependentUpon>TableBookings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserLogin.aspx.cs">
+      <DependentUpon>UserLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserLogin.aspx.designer.cs">
+      <DependentUpon>UserLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewBookings.aspx.cs">
+      <DependentUpon>ViewBookings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewBookings.aspx.designer.cs">
+      <DependentUpon>ViewBookings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewOrders.aspx.cs">
+      <DependentUpon>ViewOrders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewOrders.aspx.designer.cs">
+      <DependentUpon>ViewOrders.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Employee.Master" />
-    <Content Include="Customer.Master" />
+    <Content Include="CustomerSite.Master" />
+    <Content Include="EmployeeSite.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

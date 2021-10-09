@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Customer.Master" AutoEventWireup="true" CodeBehind="SignUp.aspx.cs" Inherits="GROUP22.SignUp" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CustomerSite.Master" AutoEventWireup="true" CodeBehind="SignUp.aspx.cs" Inherits="TheSpotGroup22.SignUp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -146,14 +146,14 @@
                                     
                                     
                                     <div class="form-group d-grid g-2">
-                                        <asp:Button class="btn btn-primary btn-block" ID="btnSignUp" runat="server" Text="Sign Up" />
+                                        <asp:Button class="btn btn-primary btn-block" ID="btnSignUp" runat="server" Text="Sign Up" OnClick="btnSignUp_Click" />
                                     </div>
                                     
                                     <h2>
 
                                     </h2>
-                                    <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
-                                    
+                                    <asp:Label ID="lblError" runat="server" Text=""></asp:Label><br />
+                                    <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Create password and confirm password MUST match" ControlToCompare="txtCreatePassword" ControlToValidate="txtConfirmPassword"></asp:CompareValidator>
                                  </div>
                         </div>
 

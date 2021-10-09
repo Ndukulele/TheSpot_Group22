@@ -11,44 +11,62 @@ namespace TheSpotGroup22
 {
 
 
-    public partial class Cart
+    public partial class Home
     {
 
         /// <summary>
-        /// gvSCart control.
+        /// lblOrders control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvSCart;
+        protected global::System.Web.UI.WebControls.Label lblOrders;
 
         /// <summary>
-        /// Label1 control.
+        /// lblProduct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label lblProduct;
 
         /// <summary>
-        /// lblTotalAmount control.
+        /// lblCustomers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalAmount;
+        protected global::System.Web.UI.WebControls.Label lblCustomers;
 
         /// <summary>
-        /// btnCheckOut control.
+        /// lblEployees control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCheckOut;
+        protected global::System.Web.UI.WebControls.Label lblEployees;
+
+        /// <summary>
+        /// lblEnquiries control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEnquiries;
+
+        /// <summary>
+        /// lblBookings control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBookings;
 
         /// <summary>
         /// lblError control.

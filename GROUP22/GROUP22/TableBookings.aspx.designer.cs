@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GROUP22
+namespace TheSpotGroup22
 {
 
 

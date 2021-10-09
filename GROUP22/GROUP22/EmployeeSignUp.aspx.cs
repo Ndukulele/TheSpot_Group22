@@ -10,7 +10,7 @@ using System.Data;
 
 namespace TheSpotGroup22
 {
-    public partial class SignUp : System.Web.UI.Page
+    public partial class EmployeeSignUp : System.Web.UI.Page
     {
         string conStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dell\Documents\CMPG 223\TheSpot\TheSpotGroup22\TheSpotGroup22\App_Data\Restaurant.mdf;Integrated Security=True";
         SqlConnection conn;
@@ -32,7 +32,7 @@ namespace TheSpotGroup22
                 adapt = new SqlDataAdapter();
                 ds = new DataSet();
 
-                string sql = "SELECT count(*) From tblCustomerDetails WHERE email = '" + txtEmailAddress.Text + "'";
+                string sql = "SELECT count(*) From tblEmployeeDetails WHERE email = '" + txtEmailAdress.Text + "'";
                 comm = new SqlCommand(sql, conn);
                 string email = comm.ExecuteScalar().ToString();
 
@@ -43,7 +43,7 @@ namespace TheSpotGroup22
                 else
                 {
                     register();
-                    Response.Redirect("UserLogin.aspx");
+                    Response.Redirect("EmployeeLogin.aspx");
                 }
 
                 conn.Close();
@@ -58,18 +58,18 @@ namespace TheSpotGroup22
         public void register()
         {
 
-            string sql = "INSERT INTO tblCustomerDetails(customerName, customerSurname, password, phoneNumber, email, dateOfBirth) VALUES(@firstName, @surname, @password, @phoneNumber, @email, @dateOfBirth)";
+            string sql = "INSERT INTO tblEmployeeDetails(employeeName, employeeSurname, password, phoneNumber, email, dateOfBirth) VALUES(@firstName, @surname, @password, @phoneNumber, @email, @dateOfBirth)";
 
             comm = new SqlCommand(sql, conn);
             comm.Parameters.AddWithValue("@firstName", txtFirstName.Text);
             comm.Parameters.AddWithValue("@surname", txtSurname.Text);
             comm.Parameters.AddWithValue("@password", txtConfirmPassword.Text);
             comm.Parameters.AddWithValue("@phoneNumber", txtPhoneNumber.Text);
-            comm.Parameters.AddWithValue("@email", txtEmailAddress.Text);
+            comm.Parameters.AddWithValue("@email", txtEmailAdress.Text);
             comm.Parameters.AddWithValue("@dateOfBirth", txtDateOfBirth.Text);
 
             comm.ExecuteNonQuery();
-           
+
         }
     }
 }

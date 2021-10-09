@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CustomerSite.Master" AutoEventWireup="true" CodeBehind="UserLogin.aspx.cs" Inherits="TheSpotGroup22.UserLogin" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/EmployeeSite.Master" AutoEventWireup="true" CodeBehind="EmployeeLogin.aspx.cs" Inherits="TheSpotGroup22.EmployeeLogin" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -11,7 +11,7 @@
                         <div class="row">
                                 <div class="col">
                                     <centre>
-                                        <img width="150px" src="img/prof.png" />
+                                        <img width="150px" src="img/employee.png" />
                                     </centre>
                                  </div>
                         </div>
@@ -19,7 +19,7 @@
                         <div class="row">
                                 <div class="col">
                                     <centre>
-                                        <h3>Customer Login</h3>
+                                        <h3>Employee Login</h3>
                                     </centre>
                                  </div>
                         </div>
@@ -56,10 +56,11 @@
                                     <div class="form-group d-grid g-2">
                                         <asp:Button class="btn btn-primary btn-block" ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" />
                                     </div>
-                                    <div class="form-group">
-                                        <asp:CheckBox ID="cbRememberMe" runat="server" />
-                                        <label>Remember Me</label>
-                                    </div>
+                                    <h2>
+
+                                    </h2>
+                                    <asp:CheckBox ID="cbRememberMe" runat="server" />
+                                    <asp:Label ID="lblRememberMe" runat="server" Text="Remember Me"></asp:Label>
                                     <h2>
 
                                     </h2>
@@ -71,6 +72,7 @@
 
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

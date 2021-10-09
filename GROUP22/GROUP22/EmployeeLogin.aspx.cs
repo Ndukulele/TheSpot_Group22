@@ -10,7 +10,7 @@ using System.Data;
 
 namespace TheSpotGroup22
 {
-    public partial class UserLogin : System.Web.UI.Page
+    public partial class EmployeeLogin : System.Web.UI.Page
     {
         string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dell\Documents\CMPG 223\TheSpot\TheSpotGroup22\TheSpotGroup22\App_Data\Restaurant.mdf;Integrated Security=True";
         SqlConnection conn;
@@ -22,36 +22,35 @@ namespace TheSpotGroup22
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            HttpCookie userCookie = Request.Cookies["UserInfo"];
+            HttpCookie employeeCookie = Request.Cookies["EmployeeInfo"];
             if (!IsPostBack)
             {
-                if (userCookie != null)
+                if (employeeCookie != null)
                 {
-                    
-                    Response.Redirect("Menu.aspx");
+
+                    Response.Redirect("Home.aspx");
                 }
-                
+
             }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-
             checkInfo();
         }
 
         private void checkInfo()
         {
-            
+
             conn = new SqlConnection(constr);
             try
             {
-                HttpCookie userCookie = new HttpCookie("UserInfo");
+                HttpCookie employeeCookie = new HttpCookie("employeeInfo");
                 conn.Open();
                 adapt = new SqlDataAdapter();
                 ds = new DataSet();
 
-                string sql = $"SELECT customerId,password FROM tblCustomerDetails WHERE email = '{txtEmail.Text}'";
+                string sql = $"SELECT employeeId,password FROM tblEmployeeDetails WHERE email = '{txtEmail.Text}'";
 
                 comm = new SqlCommand(sql, conn);
 
@@ -60,8 +59,8 @@ namespace TheSpotGroup22
                 if (theReader.Read())
                 {
                     string id = theReader.GetValue(0).ToString();
-                    userCookie["customerId"] = id;
-                    Response.Cookies.Add(userCookie);
+                    employeeCookie["employeeId"] = id;
+                    Response.Cookies.Add(employeeCookie);
 
                     string tempPassword = theReader.GetValue(1).ToString();
 
@@ -71,9 +70,9 @@ namespace TheSpotGroup22
                     {
                         if (cbRememberMe.Checked)
                         {
-                            userCookie.Expires = DateTime.Now.AddDays(2);
+                            employeeCookie.Expires = DateTime.Now.AddDays(2);
                         }
-                        Response.Redirect("Menu.aspx", false);
+                        Response.Redirect("Home.aspx", false);
                     }
                     else
                     {
@@ -81,8 +80,6 @@ namespace TheSpotGroup22
                         lblError.Text = "Invalid Password";
 
                     }
-
-
                 }
                 else
                 {
@@ -90,19 +87,12 @@ namespace TheSpotGroup22
                     lblError.Text = "Invalid Email";
 
                 }
-
                 conn.Close();
-
             }
             catch (Exception error)
             {
-
                 lblError.Text = error.Message;
-
             }
-
         }
-
     }
-    
 }

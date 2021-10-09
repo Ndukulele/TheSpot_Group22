@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Customer.Master" AutoEventWireup="true" CodeBehind="TableBookings.aspx.cs" Inherits="GROUP22.TableBookings" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CustomerSite.Master" AutoEventWireup="true" CodeBehind="TableBookings.aspx.cs" Inherits="TheSpotGroup22.TableBookings" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="css/Menu.css" rel="stylesheet" />
+     <link href="css/Menu.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div>
@@ -41,7 +41,7 @@
                     <tr>
                         <td>
                                 <asp:Button ID="btnSubmitBooking" runat="server" Text="Book" BackColor="Lavender"
-                                Style="border: solid 1px #ddd" Height="40px" Width="200px" >
+                                Style="border: solid 1px #ddd" Height="40px" Width="200px" OnClick="btnSubmitBooking_Click"/>
                         </td>
                     </tr>
                 </table>
@@ -63,7 +63,7 @@
 
                         <td valign="top">
                             Time in:<br />
-                            <asp:DropDownList ID="ddlTimeIn" Width="250px" BackColor="Purple" ForeColor="Orange" Height="35px" runat="server">
+                            <asp:DropDownList ID="ddlTimeIn" Width="250px" BackColor="Black" ForeColor="Orange" Height="35px" runat="server">
                                 <asp:ListItem Value="-1"> Select Time You gonna arrive at The Spot </asp:ListItem>
                                 <asp:ListItem Value="0"> 09:00 am </asp:ListItem>
                                 <asp:ListItem Value="1"> 10:00 am </asp:ListItem>
@@ -82,7 +82,7 @@
                             <br /><br /><br />
 
                             Time Out:<br />
-                            <asp:DropDownList ID="ddlTimeOut" Width="250px" BackColor="Purple" ForeColor="Orange" Height="35px" runat="server">
+                            <asp:DropDownList ID="ddlTimeOut" Width="250px" BackColor="Black" ForeColor="Orange" Height="35px" runat="server">
                                 <asp:ListItem Value="-1"> Select Time You gonna leave The Spot </asp:ListItem>
                                 <asp:ListItem Value="0"> 09:00 am </asp:ListItem>
                                 <asp:ListItem Value="1"> 10:00 am </asp:ListItem>
@@ -110,7 +110,7 @@
 
                             <div style="width: 450px">
                                 <asp:Button ID="btnCheckAvailability" runat="server" Text="Check availability" BackColor="Lavender"
-                                Style="border: solid 1px #ddd" Height="40px" Width="200px"/>
+                                Style="border: solid 1px #ddd" Height="40px" Width="200px" OnClick="btnCheckAvailability_Click" />
 
                             </div>
                         </td>
