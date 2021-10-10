@@ -30,19 +30,19 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="color: #FF6600">
                         <li class="nav-item active">
-                            <a class="nav-link" href="Menu.aspx" style="color: #FF6600"> Menu </a>
+                            <a class="nav-link" ID="menu" runat="server" href="Menu.aspx" style="color: #FF6600"> Menu </a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="TableBookings.aspx" style="color: #FF6600"> Book Table </a>
+                            <a class="nav-link" ID="tableBooking" runat="server" href="TableBookings.aspx" style="color: #FF6600"> Book Table </a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="Bookings.aspx" style="color: #FF6600"> Bookings </a>
+                            <a class="nav-link" ID="bookings" runat="server" href="Bookings.aspx" style="color: #FF6600"> Bookings </a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="#" style="color: #FF6600"> Orders </a>
+                            <a class="nav-link" ID="orders" runat="server" href="#" style="color: #FF6600"> Orders </a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="Cart.aspx" style="color: #FF6600"> Cart</a>
+                            <a class="nav-link" ID="cart" runat="server" href="Cart.aspx" style="color: #FF6600"> Cart</a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="#" style="#FF6600; color: #FF6600;">About Us</a>

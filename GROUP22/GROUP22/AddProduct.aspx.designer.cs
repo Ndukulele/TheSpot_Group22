@@ -11,124 +11,106 @@ namespace TheSpotGroup22
 {
 
 
-    public partial class EmployeeSite
+    public partial class AddProduct
     {
 
         /// <summary>
-        /// head control.
+        /// lblItemName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.Label lblItemName;
 
         /// <summary>
-        /// form1 control.
+        /// txtItemName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.TextBox txtItemName;
 
         /// <summary>
-        /// home control.
+        /// lblItemPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor home;
+        protected global::System.Web.UI.WebControls.Label lblItemPrice;
 
         /// <summary>
-        /// addProduct control.
+        /// txtItemPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor addProduct;
+        protected global::System.Web.UI.WebControls.TextBox txtItemPrice;
 
         /// <summary>
-        /// editMenu control.
+        /// lblInvre control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor editMenu;
+        protected global::System.Web.UI.WebControls.Label lblInvre;
 
         /// <summary>
-        /// viewOrders control.
+        /// txtIncredients control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor viewOrders;
+        protected global::System.Web.UI.WebControls.TextBox txtIncredients;
 
         /// <summary>
-        /// viewBookings control.
+        /// lblPic control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor viewBookings;
+        protected global::System.Web.UI.WebControls.Label lblPic;
 
         /// <summary>
-        /// customerInfo control.
+        /// flPic control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor customerInfo;
+        protected global::System.Web.UI.WebControls.FileUpload flPic;
 
         /// <summary>
-        /// reports control.
+        /// lblError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor reports;
+        protected global::System.Web.UI.WebControls.Label lblError;
 
         /// <summary>
-        /// logOut control.
+        /// btnAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton logOut;
+        protected global::System.Web.UI.WebControls.Button btnAdd;
 
         /// <summary>
-        /// ContentPlaceHolder1 control.
+        /// btnDone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
-
-        /// <summary>
-        /// customerLogin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton customerLogin;
-
-        /// <summary>
-        /// customerRegistraction control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton customerRegistraction;
+        protected global::System.Web.UI.WebControls.Button btnDone;
     }
 }

@@ -20,6 +20,18 @@ namespace TheSpotGroup22
         DataSet ds;
         protected void Page_Load(object sender, EventArgs e)
         {
+            Control myCustomerLogin = Page.Master.FindControl("customerLogin");
+            Control myCustomerSignUp = Page.Master.FindControl("customerRegistraction");
+
+
+            if (myCustomerLogin != null && myCustomerSignUp != null)
+            {
+
+                myCustomerLogin.Visible = false;
+                myCustomerSignUp.Visible = false;
+
+            }
+
             noCustomers();
             noEmployees();
             noBoookings();
