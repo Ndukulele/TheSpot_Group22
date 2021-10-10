@@ -68,6 +68,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddProduct.aspx" />
+    <Content Include="App_Data\Restaurant.mdf" />
+    <Content Include="App_Data\Restaurant_log.ldf">
+      <DependentUpon>Restaurant.mdf</DependentUpon>
+    </Content>
     <Content Include="Bookings.aspx" />
     <Content Include="bootstrap\css\bootstrap.min.css" />
     <Content Include="bootstrap\js\bootstrap.bundle.min.js" />
