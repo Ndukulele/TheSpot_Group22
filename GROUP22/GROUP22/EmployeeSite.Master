@@ -26,25 +26,25 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background-color:darkviolet">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item active">
-                            <a class="nav-link" href="Home.aspx"> Home </a>
+                            <a class="nav-link" id="home" runat="server" href="Home.aspx"> Home </a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="AddProduct.aspx"> Edit Menu </a>
+                            <a class="nav-link" id="addProduct" runat="server" href="AddProduct.aspx"> Add Product </a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="EditMenu.aspx"> View Product </a>
+                            <a class="nav-link" id="editMenu" runat="server" href="EditMenu.aspx"> Edit Menu </a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="#"> New Order</a>
+                            <a class="nav-link" id="viewOrders" runat="server" href="#"> New Order</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="ViewBookings.aspx"> Table Bookings</a>
+                            <a class="nav-link" id="viewBookings" runat="server" href="ViewBookings.aspx"> Table Bookings</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="CustomerInfo.aspx">User Account</a>
+                            <a class="nav-link" id="customerInfo" runat="server" href="CustomerInfo.aspx">User Account</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Reports</a>
+                            <a class="nav-link" id="reports" runat="server" href="#">Reports</a>
                         </li>
                     </ul>
 
@@ -61,6 +61,21 @@
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
+
+        <footer>
+            <div id="footer1" class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 text-centre">
+                        <p>
+                            <asp:Linkbutton class="footerlinks" ID="customerLogin" runat="server"  > Customer Login </asp:Linkbutton>
+                            &nbsp;
+                            <asp:Linkbutton class="footerlinks" ID="customerRegistraction" runat="server" > Customer Registraction </asp:Linkbutton>
+                            
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
 
     </form>

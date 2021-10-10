@@ -20,6 +20,19 @@ namespace TheSpotGroup22
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Control btnSignIn = Page.Master.FindControl("userLogin");
+            Control btnSignUp = Page.Master.FindControl("signUp");
+            Control btnELogin = Page.Master.FindControl("employeeLogin");
+            Control btnESignUp = Page.Master.FindControl("EmployeeRegistraction");
+
+            if (btnSignIn != null && btnSignUp != null && btnELogin != null && btnESignUp != null)
+            {
+                btnSignIn.Visible = false;
+                btnSignUp.Visible = false;
+                btnESignUp.Visible = false;
+                btnELogin.Visible = false;
+            }
+
             if (!IsPostBack)
             {
                 fillMenu();
@@ -47,7 +60,7 @@ namespace TheSpotGroup22
             }
             catch (Exception error)
             {
-                lblNoOfItems.Text = error.Message;
+                lblError.Text = error.Message;
 
             }
         }
@@ -78,7 +91,7 @@ namespace TheSpotGroup22
             }
             catch (Exception error)
             {
-                lblNoOfItems.Text = error.Message;
+                lblError.Text = error.Message;
 
             }
         }

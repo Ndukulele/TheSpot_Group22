@@ -10,9 +10,9 @@ using System.Data;
 
 namespace TheSpotGroup22
 {
-    public partial class Bookings : System.Web.UI.Page
+    public partial class AddProduct : System.Web.UI.Page
     {
-        string conStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dell\Documents\CMPG 223\TheSpot\TheSpotGroup22\TheSpotGroup22\App_Data\Restaurant.mdf;Integrated Security=True";
+        string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dell\Documents\CMPG 223\TheSpot\TheSpotGroup22\TheSpotGroup22\App_Data\Restaurant.mdf;Integrated Security=True";
         SqlConnection conn;
         SqlCommand comm;
         SqlDataAdapter adapt;
@@ -20,8 +20,6 @@ namespace TheSpotGroup22
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            HttpCookie userCookie = Request.Cookies["UserInfo"];
-
             Control btnSignIn = Page.Master.FindControl("userLogin");
             Control btnSignUp = Page.Master.FindControl("signUp");
             Control btnELogin = Page.Master.FindControl("employeeLogin");
@@ -34,39 +32,29 @@ namespace TheSpotGroup22
                 btnESignUp.Visible = false;
                 btnELogin.Visible = false;
             }
-
-            if (!IsPostBack)
-            {
-                if (userCookie != null)
-                {
-                    fillMenu();
-                }
-                else
-                {
-                    Response.Redirect("UserLogin.aspx", false);
-                }
-            }
         }
 
-        public void fillMenu()
+        protected void btnAdd_Click(object sender, EventArgs e)
         {
-            HttpCookie userCookie = Request.Cookies["UserInfo"];
-            conn = new SqlConnection(conStr);
+            conn = new SqlConnection(constr);
             try
             {
-
+                String filename = flPic.PostedFile.FileName;
+                String filepath = "img/" + flPic.FileName;
+                flPic.PostedFile.SaveAs(Server.MapPath("~/img/") + filename);
                 conn.Open();
                 adapt = new SqlDataAdapter();
-                ds = new DataSet();
 
-                string sql = "SELECT bookingId, tableNo, totalPeople, bookingDate, timeIn, timeOut FROM tblBookingDetails WHERE customerId ='" + int.Parse(userCookie["customerId"]) + "'";
+                string sql = $"INSERT INTO tblMenu(productName, productPrice, productDescription, image) VALUES(@name, @price, @description, @image)";
+
                 comm = new SqlCommand(sql, conn);
-                adapt.SelectCommand = comm;
-                adapt.Fill(ds);
+                comm.Parameters.AddWithValue("@name", txtItemName.Text);
+                comm.Parameters.AddWithValue("@price", txtItemPrice.Text);
+                comm.Parameters.AddWithValue("@description", txtIncredients.Text);
+                comm.Parameters.AddWithValue("@image", filepath);
 
-                gvBookings.DataSource = ds;
-                gvBookings.DataBind();
 
+                comm.ExecuteNonQuery();
                 conn.Close();
 
             }
@@ -77,9 +65,9 @@ namespace TheSpotGroup22
             }
         }
 
-        protected void gvBookings_SelectedIndexChanged(object sender, EventArgs e)
+        protected void btnDone_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Home.aspx");
         }
     }
 }
