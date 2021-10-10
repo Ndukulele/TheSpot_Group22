@@ -20,7 +20,28 @@ namespace TheSpotGroup22
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Control myHome = Page.Master.FindControl("home");
+            Control myAddPRoduct = Page.Master.FindControl("addProduct");
+            Control myEditMenu = Page.Master.FindControl("editMenu");
+            Control myViewOrders = Page.Master.FindControl("viewOrders");
+            Control myViewBookings = Page.Master.FindControl("viewBookings");
+            Control myCustomerInfo = Page.Master.FindControl("customerInfo");
+            Control myReports = Page.Master.FindControl("reports");
 
+            Control btnLogout = Page.Master.FindControl("logOut");
+
+            if (myHome != null && myAddPRoduct != null && myEditMenu != null && myViewOrders != null && myViewBookings != null && myCustomerInfo != null && myReports != null && btnLogout != null)
+            {
+                myHome.Visible = false;
+                myAddPRoduct.Visible = false;
+                myEditMenu.Visible = false;
+                myViewOrders.Visible = false;
+                myViewBookings.Visible = false;
+                myCustomerInfo.Visible = false;
+                myReports.Visible = false;
+
+                btnLogout.Visible = false;
+            }
         }
 
         protected void btnSignUp_Click(object sender, EventArgs e)

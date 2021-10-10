@@ -20,17 +20,16 @@ namespace TheSpotGroup22
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Control btnSignIn = Page.Master.FindControl("userLogin");
-            Control btnSignUp = Page.Master.FindControl("signUp");
-            Control btnELogin = Page.Master.FindControl("employeeLogin");
-            Control btnESignUp = Page.Master.FindControl("EmployeeRegistraction");
+            Control myCustomerLogin = Page.Master.FindControl("customerLogin");
+            Control myCustomerSignUp = Page.Master.FindControl("customerRegistraction");
 
-            if (btnSignIn != null && btnSignUp != null && btnELogin != null && btnESignUp != null)
+
+            if (myCustomerLogin != null && myCustomerSignUp != null)
             {
-                btnSignIn.Visible = false;
-                btnSignUp.Visible = false;
-                btnESignUp.Visible = false;
-                btnELogin.Visible = false;
+
+                myCustomerLogin.Visible = false;
+                myCustomerSignUp.Visible = false;
+
             }
         }
 
