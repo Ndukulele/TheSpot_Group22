@@ -12,7 +12,7 @@ namespace TheSpotGroup22
 {
     public partial class UserLogin : System.Web.UI.Page
     {
-        string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dell\Documents\CMPG 223\TheSpot\TheSpotGroup22\TheSpotGroup22\App_Data\Restaurant.mdf;Integrated Security=True";
+        string conStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|Restaurant.mdf;Integrated Security=True";
         SqlConnection conn;
         SqlCommand comm;
         SqlDataAdapter adapt;
@@ -22,59 +22,66 @@ namespace TheSpotGroup22
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Control myHome = Page.Master.FindControl("home");
-            Control myAddPRoduct = Page.Master.FindControl("addProduct");
-            Control myEditMenu = Page.Master.FindControl("editMenu");
-            Control myViewOrders = Page.Master.FindControl("viewOrders");
-            Control myViewBookings = Page.Master.FindControl("viewBookings");
-            Control myCustomerInfo = Page.Master.FindControl("customerInfo");
-            Control myReports = Page.Master.FindControl("reports");
+            conn = new SqlConnection(conStr);
 
-            Control btnLogout = Page.Master.FindControl("logOut");
+            //master page control
+            ImageButton imgProfile = (ImageButton)Page.Master.FindControl("imgProfile");
+            imgProfile.Visible = false;
 
-            if (myHome != null && myAddPRoduct != null && myEditMenu != null && myViewOrders != null && myViewBookings != null && myCustomerInfo != null && myReports != null && btnLogout != null)
-            {
-                myHome.Visible = false;
-                myAddPRoduct.Visible = false;
-                myEditMenu.Visible = false;
-                myViewOrders.Visible = false;
-                myViewBookings.Visible = false;
-                myCustomerInfo.Visible = false;
-                myReports.Visible = false;
+            LinkButton linkMenu = (LinkButton)Page.Master.FindControl("linkMenu");
+            linkMenu.Visible = false;
+            LinkButton linkBook = (LinkButton)Page.Master.FindControl("linkBookTable");
+            linkBook.Visible = false;
+            LinkButton linkBookings = (LinkButton)Page.Master.FindControl("linkBookings");
+            linkBookings.Visible = false;
+            LinkButton linkOrders = (LinkButton)Page.Master.FindControl("linkOrders");
+            linkOrders.Visible = false;
+            LinkButton linkCart = (LinkButton)Page.Master.FindControl("linkCart");
+            linkCart.Visible = false;
 
-                btnLogout.Visible = false;
-            }
+            LinkButton linkLogin = (LinkButton)Page.Master.FindControl("linkUserLogin");
+            linkLogin.Visible = false;
+            LinkButton linkSignUp = (LinkButton)Page.Master.FindControl("linkSignUp");
+            linkSignUp.Visible = true;
+            Label linkHello = (Label)Page.Master.FindControl("lblHelloUser");
+            linkHello.Visible = false;
+            LinkButton linkLogout = (LinkButton)Page.Master.FindControl("linkLogout");
+            linkLogout.Visible = false;
+
+            LinkButton linkEmpLog = (LinkButton)Page.Master.FindControl("linkEmployeeLogin");
+            linkEmpLog.Visible = true;
+            LinkButton linkEmpReg = (LinkButton)Page.Master.FindControl("linkEmployeeRegistration");
+            linkEmpReg.Visible = true;
+            //
 
             HttpCookie userCookie = Request.Cookies["UserInfo"];
-            if (!IsPostBack)
+            if (userCookie != null)
             {
-                if (userCookie != null)
+                if (!IsPostBack)
                 {
-                    
-                    Response.Redirect("Menu.aspx");
+
                 }
-                
+
+                Response.Redirect("Menu.aspx");
             }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-
-            checkInfo();
+            checkInfo(txtEmail.Text, txtPassword.Text);
         }
 
-        private void checkInfo()
+        private void checkInfo(string emailLogin, string passLogin)
         {
-            
-            conn = new SqlConnection(constr);
             try
             {
                 HttpCookie userCookie = new HttpCookie("UserInfo");
+
                 conn.Open();
                 adapt = new SqlDataAdapter();
                 ds = new DataSet();
 
-                string sql = $"SELECT customerId,password FROM tblCustomerDetails WHERE email = '{txtEmail.Text}'";
+                string sql = $"SELECT customerId,customerName,email,password FROM TableCustomers WHERE email = '{emailLogin}'";
 
                 comm = new SqlCommand(sql, conn);
 
@@ -83,47 +90,43 @@ namespace TheSpotGroup22
                 if (theReader.Read())
                 {
                     string id = theReader.GetValue(0).ToString();
-                    userCookie["customerId"] = id;
-                    Response.Cookies.Add(userCookie);
+                    string name = theReader.GetValue(1).ToString();
+                    string tempEmail = theReader.GetValue(2).ToString();
+                    string tempPassword = theReader.GetValue(3).ToString();
 
-                    string tempPassword = theReader.GetValue(1).ToString();
-
-                    string enteredPassword = txtPassword.Text;
-
-                    if (String.Compare(tempPassword, enteredPassword) == 0)
+                    if (String.Compare(tempPassword, passLogin) == 0)
                     {
+                        userCookie["customerName"] = name;
+                        userCookie["email"] = tempEmail;
+                        userCookie["pass"] = tempPassword;
+                        Response.Cookies.Add(userCookie);
+                        userCookie["customerId"] = id;
+
                         if (cbRememberMe.Checked)
                         {
                             userCookie.Expires = DateTime.Now.AddDays(2);
                         }
+
+                        Session["customerId"] = id;
+                        Session["customerName"] = name;
                         Response.Redirect("Menu.aspx", false);
                     }
                     else
                     {
-
                         lblError.Text = "Invalid Password";
-
                     }
-
-
                 }
                 else
                 {
-
-                    lblError.Text = "Invalid Email";
-
+                    lblError.Text = "User account not found for " + emailLogin;
                 }
 
                 conn.Close();
-
             }
             catch (Exception error)
             {
-
-                lblError.Text = error.Message;
-
+                lblError.Text = "There was an error accessing the database, more info: " + error.Message;
             }
-
         }
 
     }

@@ -33,85 +33,94 @@ namespace TheSpotGroup22
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// menu control.
+        /// ImgProfile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor menu;
+        protected global::System.Web.UI.WebControls.ImageButton ImgProfile;
 
         /// <summary>
-        /// tableBooking control.
+        /// linkMenu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor tableBooking;
+        protected global::System.Web.UI.WebControls.LinkButton linkMenu;
 
         /// <summary>
-        /// bookings control.
+        /// linkBookTable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor bookings;
+        protected global::System.Web.UI.WebControls.LinkButton linkBookTable;
 
         /// <summary>
-        /// orders control.
+        /// linkBookings control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor orders;
+        protected global::System.Web.UI.WebControls.LinkButton linkBookings;
 
         /// <summary>
-        /// cart control.
+        /// linkOrders control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor cart;
+        protected global::System.Web.UI.WebControls.LinkButton linkOrders;
 
         /// <summary>
-        /// userLogin control.
+        /// linkCart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton userLogin;
+        protected global::System.Web.UI.WebControls.LinkButton linkCart;
 
         /// <summary>
-        /// signUp control.
+        /// linkUserLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton signUp;
+        protected global::System.Web.UI.WebControls.LinkButton linkUserLogin;
 
         /// <summary>
-        /// logOut control.
+        /// linkSignUp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton logOut;
+        protected global::System.Web.UI.WebControls.LinkButton linkSignUp;
 
         /// <summary>
-        /// helloUser control.
+        /// lblHelloUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton helloUser;
+        protected global::System.Web.UI.WebControls.Label lblHelloUser;
+
+        /// <summary>
+        /// linkLogout control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton linkLogout;
 
         /// <summary>
         /// ContentPlaceHolder1 control.
@@ -123,21 +132,30 @@ namespace TheSpotGroup22
         protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
 
         /// <summary>
-        /// employeeLogin control.
+        /// linkAboutUs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton employeeLogin;
+        protected global::System.Web.UI.WebControls.LinkButton linkAboutUs;
 
         /// <summary>
-        /// EmployeeRegistraction control.
+        /// linkEmployeeLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton EmployeeRegistraction;
+        protected global::System.Web.UI.WebControls.LinkButton linkEmployeeLogin;
+
+        /// <summary>
+        /// linkEmployeeRegistration control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton linkEmployeeRegistration;
     }
 }

@@ -14,7 +14,7 @@
                 <asp:BoundField DataField="productId" HeaderText="ProductID">
                 <ItemStyle HorizontalAlign="Center" />
                 </asp:BoundField>
-                <asp:ImageField DataImageUrlField="image" HeaderText="ProductImage">
+                <asp:ImageField DataImageUrlField="productImage" HeaderText="ProductImage">
                     <ControlStyle Height="50px" Width="50px" />
                     <ItemStyle HorizontalAlign="Center" />
                 </asp:ImageField>
@@ -24,7 +24,7 @@
                 <asp:BoundField DataField="productPrice" HeaderText="ProductPrice">
                 <ItemStyle HorizontalAlign="Center" />
                 </asp:BoundField>
-                <asp:BoundField DataField="quantity" HeaderText="Quantity">
+                <asp:BoundField DataField="productQuantity" HeaderText="Quantity">
                 <ItemStyle HorizontalAlign="Center" />
                 </asp:BoundField>
                 <asp:BoundField DataField="totalPrice" HeaderText="TotalPrice">

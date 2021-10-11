@@ -9,9 +9,9 @@
         
         <br /><br />
         
-        <asp:GridView ID="gvBookings" runat="server" AutoGenerateColumns="False" BackColor="#FF3300" Font-Bold="True" Height="70px" ShowFooter="True" Width="1100px" EmptyDataText="No Data" DataKeyNames="bookingId" OnSelectedIndexChanged="gvBookings_SelectedIndexChanged">
+        <asp:GridView ID="gvBookings" runat="server" AutoGenerateColumns="False" BackColor="#FF3300" Font-Bold="True" Height="70px" ShowFooter="True" Width="1100px" EmptyDataText="No Data" DataKeyNames="bookId" OnSelectedIndexChanged="gvBookings_SelectedIndexChanged">
             <Columns>
-                <asp:BoundField DataField="bookingId" HeaderText="Booking ID">
+                <asp:BoundField DataField="bookId" HeaderText="Booking ID">
                 <HeaderStyle HorizontalAlign="Center" />
                 <ItemStyle HorizontalAlign="Center" />
                 </asp:BoundField>
@@ -23,7 +23,7 @@
                 <HeaderStyle HorizontalAlign="Center" />
                 <ItemStyle HorizontalAlign="Center" />
                 </asp:BoundField>
-                <asp:BoundField DataField="bookingDate" HeaderText="Booked Date">
+                <asp:BoundField DataField="bookingDate" HeaderText="Booked Date" DataFormatString = "{0:dd/MM/yyyy}">
                 <HeaderStyle HorizontalAlign="Center" />
                 <ItemStyle HorizontalAlign="Center" />
                 </asp:BoundField>

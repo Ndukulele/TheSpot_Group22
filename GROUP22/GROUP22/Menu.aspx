@@ -12,21 +12,8 @@
         <td>
             <div id="orderDetailsDiv">
                 <table>
-                    <tr>
-                        <th style="text-align: center">Other Information
-                        </th>
-                    </tr>
-                    <tr>
-                        <td>Number of items added:&nbsp;
-                            <asp:Label ID="lblNoOfItems" Font-Bold="true" runat="server" Text="0"></asp:Label>&nbsp
-                            items
-                            <br />
-                            Total Price: &nbsp; <b>R</b>
-                            <asp:Label ID="lblTotalPrice" runat="server" Font-Bold="true" Text="0"></asp:Label>
-                            <asp:Button ID="btnViewMyOrder" runat="server" Text="View my order" />
-                        </td>
-                    </tr>
-                </table>
+                    </table>
+                            <asp:Label ID="lblNoOfItems" Font-Bold="True" runat="server"></asp:Label>
             </div>
         </td>
         <tr>
@@ -53,7 +40,7 @@
                                             <tr>
                                                 <td>
                                                     <a href="FoodItems.aspx?id=<%# Eval("productId") %>">
-                                                        <img alt="" height="100px" width="100px" src='<%# Eval("image") %>' /></a>
+                                                        <img alt="" height="100px" width="100px" src='<%# Eval("productImage") %>' /></a>
 
                                                 </td>
                                                 <td>
@@ -67,11 +54,9 @@
                                     </ItemTemplate>
                                 </asp:Repeater>
                             </td>
-                            
                         </tr>
                     </table>
                 </div>
-                <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
             </td>
         </tr>
     </table>

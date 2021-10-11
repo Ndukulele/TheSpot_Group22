@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/EmployeeSite.Master" AutoEventWireup="true" CodeBehind="AddProduct.aspx.cs" Inherits="TheSpotGroup22.AddProduct" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Employee.Master" AutoEventWireup="true" CodeBehind="AddProduct.aspx.cs" Inherits="TheSpotGroup22.AddProduct" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .newStyle1 {
@@ -61,6 +61,7 @@
                                         </h2>
                                         <asp:Label ID="lblPic" runat="server" Text="Item Picture:"></asp:Label>
                                         <asp:FileUpload ID="flPic" BackColor="GreenYellow" runat="server" />
+                                        <asp:Label ID="lblAdded" runat="server"></asp:Label>
                                         <h2>
 
                                         </h2>

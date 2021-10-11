@@ -12,7 +12,7 @@ namespace TheSpotGroup22
 {
     public partial class EditMenu : System.Web.UI.Page
     {
-        string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dell\Documents\CMPG 223\TheSpot\TheSpotGroup22\TheSpotGroup22\App_Data\Restaurant.mdf;Integrated Security=True";
+        string conStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|Restaurant.mdf;Integrated Security=True";
         SqlConnection conn;
         SqlCommand comm;
         SqlDataAdapter adapt;
@@ -20,43 +20,71 @@ namespace TheSpotGroup22
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Control myCustomerLogin = Page.Master.FindControl("customerLogin");
-            Control myCustomerSignUp = Page.Master.FindControl("customerRegistraction");
+            //master page control
+            LinkButton linkHome = (LinkButton)Page.Master.FindControl("home");
+            linkHome.Visible = true;
+            LinkButton linkMenu = (LinkButton)Page.Master.FindControl("menu");
+            linkMenu.Visible = false;
+            LinkButton linkProduct = (LinkButton)Page.Master.FindControl("product");
+            linkProduct.Visible = true;
+            LinkButton linkOrder = (LinkButton)Page.Master.FindControl("order");
+            linkOrder.Visible = false;
+            LinkButton linkBook = (LinkButton)Page.Master.FindControl("booking");
+            linkBook.Visible = false;
+            LinkButton linkAccount = (LinkButton)Page.Master.FindControl("account");
+            linkAccount.Visible = false;
+            LinkButton linkReport = (LinkButton)Page.Master.FindControl("report");
+            linkReport.Visible = false;
 
+            LinkButton linkIn = (LinkButton)Page.Master.FindControl("login");
+            linkIn.Visible = false;
+            LinkButton linkUp = (LinkButton)Page.Master.FindControl("signup");
+            linkUp.Visible = false;
 
-            if (myCustomerLogin != null && myCustomerSignUp != null)
+            LinkButton linkLogout = (LinkButton)Page.Master.FindControl("linkLogout");
+            linkLogout.Visible = true;
+            //
+
+            HttpCookie employeeCookie = Request.Cookies["EmployeeInfo"];
+
+            if (!IsPostBack)
             {
+                if (employeeCookie != null)
+                {
+                    conn = new SqlConnection(conStr);
+                    try
+                    {
+                        conn.Open();
+                        adapt = new SqlDataAdapter();
+                        ds = new DataSet();
 
-                myCustomerLogin.Visible = false;
-                myCustomerSignUp.Visible = false;
+                        fill();
+
+
+                        conn.Close();
+                    }
+                    catch (Exception error)
+                    {
+                        lblError.Text = error.Message;
+                    }
+                }
+                else
+                {
+                    Response.Redirect("EmployeeLogin.aspx");
+                }
 
             }
 
             if (!IsPostBack)
             {
-                conn = new SqlConnection(constr);
-                try
-                {
-                    conn.Open();
-                    adapt = new SqlDataAdapter();
-                    ds = new DataSet();
-
-                    fill();
-                    
-
-                    conn.Close();
-                }
-                catch (Exception error)
-                {
-                    lblError.Text = error.Message;
-                }
+                
             }
         }
 
         public void fill()
         {
             
-            string sql = "SELECT productId, image, productName, productPrice, productDescription From tblMenu";
+            string sql = "SELECT productId, productImage, productName, productPrice, productDescription From TableMenu";
             comm = new SqlCommand(sql, conn);
 
             comm = new SqlCommand(sql, conn);
@@ -71,14 +99,14 @@ namespace TheSpotGroup22
         {
             int id = Convert.ToInt32(gvSMenu.DataKeys[e.RowIndex].Value.ToString());
 
-            conn = new SqlConnection(constr);
+            conn = new SqlConnection(conStr);
             try
             {
                 conn.Open();
                 adapt = new SqlDataAdapter();
                 ds = new DataSet();
 
-                string sql = "DELETE From tblMenu WHERE productId = '" + id + "'";
+                string sql = "DELETE From TableMenu WHERE productId = '" + id + "'";
                 comm = new SqlCommand(sql, conn);
                 int t = comm.ExecuteNonQuery();
 
@@ -100,7 +128,7 @@ namespace TheSpotGroup22
         protected void gvSMenu_RowEditing(object sender, GridViewEditEventArgs e)
         {
             gvSMenu.EditIndex = e.NewEditIndex;
-            conn = new SqlConnection(constr);
+            conn = new SqlConnection(conStr);
             try
             {
                 conn.Open();
@@ -127,13 +155,13 @@ namespace TheSpotGroup22
                 string price = ((TextBox)gvSMenu.Rows[e.RowIndex].Cells[3].Controls[0]).Text;
                 string description = ((TextBox)gvSMenu.Rows[e.RowIndex].Cells[4].Controls[0]).Text;
 
-                conn = new SqlConnection(constr);
+                conn = new SqlConnection(conStr);
                 conn.Open();
 
                 adapt = new SqlDataAdapter();
                 ds = new DataSet();
 
-                string sql = "UPDATE tblMenu set productName = '" + name + "', productPrice = '" + decimal.Parse(price) + "', productDescription = '" + description + "' where productId = '" + id + "'";
+                string sql = "UPDATE TableMenu set productName = '" + name + "', productPrice = '" + decimal.Parse(price) + "', productDescription = '" + description + "' where productId = '" + id + "'";
                 comm = new SqlCommand(sql, conn);
 
                 int t = comm.ExecuteNonQuery();
@@ -156,7 +184,7 @@ namespace TheSpotGroup22
         protected void gvSMenu_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             gvSMenu.EditIndex = -1;
-            conn = new SqlConnection(constr);
+            conn = new SqlConnection(conStr);
             try
             {
                 conn.Open();

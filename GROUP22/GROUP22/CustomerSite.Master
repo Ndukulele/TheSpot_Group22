@@ -17,11 +17,11 @@
 <body>
     <form id="form1" runat="server">
          <div>
-            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #000000; color: #FF6600">
-                <a class="navbar-brand" href="Profile.aspx" style="color:orange">
-                    <img width="30" height="30" src="img/profile.png" />
-                    Profile
-                </a>
+            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FFFFFF; color: #FFCC00">
+                &nbsp;<asp:ImageButton ID="ImgProfile" runat="server" Height="40px" ImageUrl="~/img/profile.png" PostBackUrl="~/Profile.aspx" Width="40px" ToolTip="Profile" CausesValidation="False" />
+                <strong>
+                &nbsp;&nbsp;&nbsp;
+                </strong>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -30,40 +30,49 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="color: #FF6600">
                         <li class="nav-item active">
-                            <a class="nav-link" ID="menu" runat="server" href="Menu.aspx" style="color: #FF6600"> Menu </a>
+                            <strong>
+                            <asp:LinkButton class="nav-link" ID="linkMenu" runat="server" ForeColor="#FFCC00" OnClick="linkMenu_Click" CausesValidation="False" >Menu</asp:LinkButton>
+&nbsp;&nbsp;&nbsp; </strong>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" ID="tableBooking" runat="server" href="TableBookings.aspx" style="color: #FF6600"> Book Table </a>
+                            <strong>
+                            <asp:LinkButton class="nav-link" ID="linkBookTable" runat="server" ForeColor="#FFCC00" OnClick="linkBookTable_Click" CausesValidation="False" >Book Table</asp:LinkButton>
+&nbsp;&nbsp;&nbsp; </strong>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" ID="bookings" runat="server" href="Bookings.aspx" style="color: #FF6600"> Bookings </a>
+                            <strong>
+                            <asp:LinkButton class="nav-link" ID="linkBookings" runat="server" ForeColor="#FFCC00" OnClick="linkBookings_Click" CausesValidation="False" >Bookings</asp:LinkButton>
+&nbsp;&nbsp;&nbsp; </strong>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" ID="orders" runat="server" href="#" style="color: #FF6600"> Orders </a>
+                            <strong>
+                            <asp:LinkButton class="nav-link" ID="linkOrders" runat="server" ForeColor="#FFCC00" OnClick="linkOrders_Click" CausesValidation="False" >Orders</asp:LinkButton>
+&nbsp;&nbsp;&nbsp; </strong>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" ID="cart" runat="server" href="Cart.aspx" style="color: #FF6600"> Cart</a>
+                            <strong>
+                            <asp:LinkButton class="nav-link" ID="linkCart" runat="server" ForeColor="#FFCC00" OnClick="linkCart_Click" CausesValidation="False" >Cart</asp:LinkButton>
+&nbsp;&nbsp;&nbsp; </strong>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="#" style="#FF6600; color: #FF6600;">About Us</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#" style="#FF6600; color: #FF6600;">Contact Us</a>
                         </li>
                     </ul>
 
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <asp:Linkbutton class="nav-link" ID="userLogin" runat="server" ForeColor="#FF6600" OnClick="userLogin_Click" > User Login </asp:Linkbutton>
+                            <asp:Linkbutton class="nav-link" ID="linkUserLogin" runat="server" OnClick="userLogin_Click" Font-Bold="True" Font-Underline="True" ForeColor="#FFCC00" CausesValidation="False" > User Login </asp:Linkbutton>
                         </li>
                         <li class="nav-item active">
-                            <asp:Linkbutton class="nav-link" ID="signUp" runat="server" ForeColor="#FF6600" OnClick="signUp_Click" > Sign Up </asp:Linkbutton>
+                            <asp:Linkbutton class="nav-link" ID="linkSignUp" runat="server" OnClick="signUp_Click" Font-Bold="True" Font-Underline="True" ForeColor="#FFCC00" CausesValidation="False" > Sign Up </asp:Linkbutton>
                         </li>
                         <li class="nav-item active">
-                            <asp:Linkbutton class="nav-link" ID="logOut" runat="server" ForeColor="#FF9900" OnClick="logOut_Click" > Logout </asp:Linkbutton>
+                            <strong>
+                            <asp:Label ID="lblHelloUser" runat="server" Text="Hello user"></asp:Label>
+                            &nbsp;&nbsp;&nbsp;
+                            </strong>
                         </li>
                         <li class="nav-item active">
-                            <asp:Linkbutton class="nav-link" ID="helloUser" runat="server" ForeColor="#FF6600" OnClick="helloUser_Click" > Hello user </asp:Linkbutton>
+                            <asp:Linkbutton class="nav-linkOut" ID="linkLogout" runat="server" OnClick="logOut_Click" Font-Bold="True" ForeColor="#FF3300" CausesValidation="False" > Logout </asp:Linkbutton>
                         </li>
 
                        
@@ -83,9 +92,14 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 text-centre">
                         <p>
-                            <asp:Linkbutton class="footerlinks" ID="employeeLogin" runat="server" OnClick="employeeLogin_Click" > Employee Login </asp:Linkbutton>
+                            <strong>
+                            <asp:LinkButton class="footerlinks" ID="linkAboutUs" runat="server" Font-Underline="False" OnClick="linkAboutUs_Click" CausesValidation="False">About Us</asp:LinkButton>
+&nbsp;&nbsp;&nbsp;
+                            <asp:Linkbutton class="footerlinks" ID="linkEmployeeLogin" runat="server" OnClick="employeeLogin_Click" CausesValidation="False" > Employee Login </asp:Linkbutton>
                             &nbsp;
-                            <asp:Linkbutton class="footerlinks" ID="EmployeeRegistraction" runat="server" OnClick="EmployeeRegistraction_Click"> Employee Registraction </asp:Linkbutton>
+                            <asp:Linkbutton class="footerlinks" ID="linkEmployeeRegistration" runat="server" OnClick="EmployeeRegistraction_Click" CausesValidation="False"> Employee Registration </asp:Linkbutton>
+                            
+                            </strong>
                             
                         </p>
                     </div>

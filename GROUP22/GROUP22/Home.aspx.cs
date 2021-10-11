@@ -12,7 +12,7 @@ namespace TheSpotGroup22
 {
     public partial class Home : System.Web.UI.Page
     {
-        string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dell\Documents\CMPG 223\TheSpot\TheSpotGroup22\TheSpotGroup22\App_Data\Restaurant.mdf;Integrated Security=True";
+        string conStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Restaurant.mdf;Integrated Security=True";
        
         SqlConnection conn;
         SqlCommand comm;
@@ -20,38 +20,84 @@ namespace TheSpotGroup22
         DataSet ds;
         protected void Page_Load(object sender, EventArgs e)
         {
-            Control myCustomerLogin = Page.Master.FindControl("customerLogin");
-            Control myCustomerSignUp = Page.Master.FindControl("customerRegistraction");
+            //master page control
+            LinkButton linkHome = (LinkButton)Page.Master.FindControl("home");
+            linkHome.Visible = false;
+            LinkButton linkMenu = (LinkButton)Page.Master.FindControl("menu");
+            linkMenu.Visible = true;
+            LinkButton linkProduct = (LinkButton)Page.Master.FindControl("product");
+            linkProduct.Visible = true;
+            LinkButton linkOrder = (LinkButton)Page.Master.FindControl("order");
+            linkOrder.Visible = true;
+            LinkButton linkBook = (LinkButton)Page.Master.FindControl("booking");
+            linkBook.Visible = true;
+            LinkButton linkAccount = (LinkButton)Page.Master.FindControl("account");
+            linkAccount.Visible = true;
+            LinkButton linkReport = (LinkButton)Page.Master.FindControl("report");
+            linkReport.Visible = true;
 
+            LinkButton linkIn = (LinkButton)Page.Master.FindControl("login");
+            linkIn.Visible = false;
+            LinkButton linkUp = (LinkButton)Page.Master.FindControl("signup");
+            linkUp.Visible = false;
 
-            if (myCustomerLogin != null && myCustomerSignUp != null)
+            LinkButton linkLogout = (LinkButton)Page.Master.FindControl("linkLogout");
+            linkLogout.Visible = true;
+            //
+
+            HttpCookie employeeCookie = Request.Cookies["employeeInfo"];
+            if (!IsPostBack)
             {
+                if (employeeCookie == null)
+                {
 
-                myCustomerLogin.Visible = false;
-                myCustomerSignUp.Visible = false;
+                    Response.Redirect("EmployeeLogin.aspx");
+                }
 
             }
 
-            noCustomers();
-            noEmployees();
-            noBoookings();
+            noOf("customerId", "customer", "TableCustomers");
+            noOf("employeeId", "employee", "TableEmployees");
+            noOf("productId", "product", "TableMenu");
+            noOf("orderId", "order", "TableOrderDetails");
+            noOf("bookId", "book", "TableBookTable");
         }
 
-        public void noCustomers()
+        public void noOf(string Of, string label, string table)
         {
-            conn = new SqlConnection(constr);
+            conn = new SqlConnection(conStr);
             try
             {
                 conn.Open();
                 adapt = new SqlDataAdapter();
                 ds = new DataSet();
 
-                string sql = "SELECT count(customerId) From tblCustomerDetails";
+                string sql = $"SELECT count({Of}) From {table}";
                 comm = new SqlCommand(sql, conn);
 
-                string customers = comm.ExecuteScalar().ToString();
+                string result = comm.ExecuteScalar().ToString();
 
-                lblCustomers.Text = customers;
+                if(label == "customer")
+                {
+                    lblCustomers.Text = result;
+                }
+                else if (label == "employee")
+                {
+                    lblEployees.Text = result;
+                }
+                else if (label == "product")
+                {
+                    lblProduct.Text = result;
+                }
+                else if (label == "order")
+                {
+                    lblOrders.Text = result;
+                }
+                else if (label == "book")
+                {
+                    lblBookings.Text = result;
+                }
+
 
                 conn.Close();
 
@@ -66,14 +112,14 @@ namespace TheSpotGroup22
 
         public void noEmployees()
         {
-            conn = new SqlConnection(constr);
+            conn = new SqlConnection(conStr);
             try
             {
                 conn.Open();
                 adapt = new SqlDataAdapter();
                 ds = new DataSet();
 
-                string sql = "SELECT count(employeeId) From tblEmployeeDetails";
+                string sql = "SELECT count(employeeId) From TableEmployees";
                 comm = new SqlCommand(sql, conn);
 
                 string employees = comm.ExecuteScalar().ToString();
@@ -91,19 +137,44 @@ namespace TheSpotGroup22
 
         public void noBoookings()
         {
-            conn = new SqlConnection(constr);
+            conn = new SqlConnection(conStr);
             try
             {
                 conn.Open();
                 adapt = new SqlDataAdapter();
                 ds = new DataSet();
 
-                string sql = "SELECT count(bookingId) From tblBookingDetails";
+                string sql = "SELECT count(bookId) From TableBookTable";
                 comm = new SqlCommand(sql, conn);
 
                 string bookings = comm.ExecuteScalar().ToString();
 
                 lblBookings.Text = bookings;
+
+                conn.Close();
+
+            }
+            catch (Exception error)
+            {
+                lblError.Text = error.Message;
+            }
+        }
+
+        public void noProducts()
+        {
+            conn = new SqlConnection(conStr);
+            try
+            {
+                conn.Open();
+                adapt = new SqlDataAdapter();
+                ds = new DataSet();
+
+                string sql = "SELECT count(productId) From TableBookTable";
+                comm = new SqlCommand(sql, conn);
+
+                string customers = comm.ExecuteScalar().ToString();
+
+                lblBookings.Text = customers;
 
                 conn.Close();
 

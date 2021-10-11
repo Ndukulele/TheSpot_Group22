@@ -12,7 +12,7 @@ namespace TheSpotGroup22
 {
     public partial class AddProduct : System.Web.UI.Page
     {
-        string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dell\Documents\CMPG 223\TheSpot\TheSpotGroup22\TheSpotGroup22\App_Data\Restaurant.mdf;Integrated Security=True";
+        string conStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|Restaurant.mdf;Integrated Security=True";
         SqlConnection conn;
         SqlCommand comm;
         SqlDataAdapter adapt;
@@ -20,8 +20,48 @@ namespace TheSpotGroup22
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //master page control
+            LinkButton linkHome = (LinkButton)Page.Master.FindControl("home");
+            linkHome.Visible = true;
+            LinkButton linkMenu = (LinkButton)Page.Master.FindControl("menu");
+            linkMenu.Visible = true;
+            LinkButton linkProduct = (LinkButton)Page.Master.FindControl("product");
+            linkProduct.Visible = false;
+            LinkButton linkOrder = (LinkButton)Page.Master.FindControl("order");
+            linkOrder.Visible = false;
+            LinkButton linkBook = (LinkButton)Page.Master.FindControl("booking");
+            linkBook.Visible = false;
+            LinkButton linkAccount = (LinkButton)Page.Master.FindControl("account");
+            linkAccount.Visible = false;
+            LinkButton linkReport = (LinkButton)Page.Master.FindControl("report");
+            linkReport.Visible = false;
+
+            LinkButton linkIn = (LinkButton)Page.Master.FindControl("login");
+            linkIn.Visible = false;
+            LinkButton linkUp = (LinkButton)Page.Master.FindControl("signup");
+            linkUp.Visible = false;
+
+            LinkButton linkLogout = (LinkButton)Page.Master.FindControl("linkLogout");
+            linkLogout.Visible = false;
+            //
+
+            HttpCookie employeeCookie = Request.Cookies["EmployeeInfo"];
+            if (!IsPostBack)
+            {
+                if (employeeCookie != null)
+                {
+
+
+                }
+                else
+                {
+                    Response.Redirect("EmployeeLogin.aspx");
+                }
+
+            }
+
             Control myCustomerLogin = Page.Master.FindControl("customerLogin");
-            Control myCustomerSignUp = Page.Master.FindControl("customerRegistraction");
+            Control myCustomerSignUp = Page.Master.FindControl("customerRegistration");
 
 
             if (myCustomerLogin != null && myCustomerSignUp != null)
@@ -35,7 +75,7 @@ namespace TheSpotGroup22
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
-            conn = new SqlConnection(constr);
+            conn = new SqlConnection(conStr);
             try
             {
                 String filename = flPic.PostedFile.FileName;
@@ -44,7 +84,7 @@ namespace TheSpotGroup22
                 conn.Open();
                 adapt = new SqlDataAdapter();
 
-                string sql = $"INSERT INTO tblMenu(productName, productPrice, productDescription, image) VALUES(@name, @price, @description, @image)";
+                string sql = $"INSERT INTO TableMenu(productName, productPrice, productDescription, productImage) VALUES(@name, @price, @description, @image)";
 
                 comm = new SqlCommand(sql, conn);
                 comm.Parameters.AddWithValue("@name", txtItemName.Text);
@@ -55,6 +95,8 @@ namespace TheSpotGroup22
 
                 comm.ExecuteNonQuery();
                 conn.Close();
+
+                lblAdded.Text = "Successfully added";
 
             }
             catch (Exception error)

@@ -136,6 +136,8 @@
                                     <label> Confirm Password</label>
                                     <h2>
 
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtConfirmPassword"></asp:RequiredFieldValidator>
+
                                     </h2>
                                     <div class="form-group">
                                         <asp:TextBox class="form-control" ID="txtConfirmPassword" runat="server" placeholder="Confirm Password" TextMode="Password"></asp:TextBox>
@@ -146,7 +148,7 @@
                                     <div class="form-group d-grid g-2">
                                         <asp:Button class="btn btn-primary btn-block" ID="btnUpdate" runat="server" Text="Update" OnClick="btnUpdate_Click" />
                                     </div>
-                                    <asp:Label ID="lblError" runat="server" Text="Label"></asp:Label>
+                                    <asp:Label ID="lblError" runat="server"></asp:Label>
                                     
                                  </div>
                                  </div>

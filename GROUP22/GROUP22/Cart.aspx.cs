@@ -12,7 +12,7 @@ namespace TheSpotGroup22
 {
     public partial class Cart : System.Web.UI.Page
     {
-        string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dell\Documents\CMPG 223\TheSpot\TheSpotGroup22\TheSpotGroup22\App_Data\Restaurant.mdf;Integrated Security=True";
+        string conStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|Restaurant.mdf;Integrated Security=True";
         SqlConnection conn;
         SqlCommand comm;
         SqlDataAdapter adapt;
@@ -20,27 +20,65 @@ namespace TheSpotGroup22
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            HttpCookie userCookie = Request.Cookies["UserInfo"];
+            //master page control
+            ImageButton imgProfile = (ImageButton)Page.Master.FindControl("imgProfile");
+            imgProfile.Visible = false;
 
-            Control btnSignIn = Page.Master.FindControl("userLogin");
-            Control btnSignUp = Page.Master.FindControl("signUp");
-            Control btnELogin = Page.Master.FindControl("employeeLogin");
-            Control btnESignUp = Page.Master.FindControl("EmployeeRegistraction");
+            LinkButton linkMenu = (LinkButton)Page.Master.FindControl("linkMenu");
+            linkMenu.Visible = true;
+            LinkButton linkBook = (LinkButton)Page.Master.FindControl("linkBookTable");
+            linkBook.Visible = true;
+            LinkButton linkBookings = (LinkButton)Page.Master.FindControl("linkBookings");
+            linkBookings.Visible = true;
+            LinkButton linkOrders = (LinkButton)Page.Master.FindControl("linkOrders");
+            linkOrders.Visible = true;
+            LinkButton linkCart = (LinkButton)Page.Master.FindControl("linkCart");
+            linkCart.Visible = true;
 
-            if (btnSignIn != null && btnSignUp != null && btnELogin != null && btnESignUp != null)
-            {
-                btnSignIn.Visible = false;
-                btnSignUp.Visible = false;
-                btnESignUp.Visible = false;
-                btnELogin.Visible = false;
-            }
+            LinkButton linkLogin = (LinkButton)Page.Master.FindControl("linkUserLogin");
+            linkLogin.Visible = false;
+            LinkButton linkSignUp = (LinkButton)Page.Master.FindControl("linkSignUp");
+            linkSignUp.Visible = false;
+            Label linkHello = (Label)Page.Master.FindControl("lblHelloUser");
+            linkHello.Visible = false;
+
+            LinkButton linkLogout = (LinkButton)Page.Master.FindControl("linkLogout");
+            linkLogout.Visible = true;
+
+            LinkButton linkEmpLog = (LinkButton)Page.Master.FindControl("linkEmployeeLogin");
+            linkEmpLog.Visible = false;
+            LinkButton linkEmpReg = (LinkButton)Page.Master.FindControl("linkEmployeeRegistration");
+            linkEmpReg.Visible = false;
+            //
 
             if (!IsPostBack)
             {
-                conn = new SqlConnection(constr);
-                try
+                if (Session["customerId"] == null)
                 {
+                    HttpCookie userCookie = Request.Cookies["UserInfo"];
                     if (userCookie != null)
+                    {
+                        linkHello = (Label)Page.Master.FindControl("lblHelloUser");
+                        linkHello.Visible = true;
+
+                        Session["customerId"] = userCookie["customerId"];
+                        Session["customerName"] = userCookie["customerName"];
+                        linkHello.Text = "Welcome " + Session["customerName"];
+                    }
+                    else
+                    {
+                        Response.Redirect("UserLogin.aspx", false);
+                    }
+                }
+                else
+                {
+                    linkHello = (Label)Page.Master.FindControl("lblHelloUser");
+                    linkHello.Visible = true;
+
+                    linkHello.Text = "Welcome " + Session["customerName"];
+
+                    conn = new SqlConnection(conStr);
+                    try
                     {
                         conn.Open();
                         adapt = new SqlDataAdapter();
@@ -51,14 +89,10 @@ namespace TheSpotGroup22
 
                         conn.Close();
                     }
-                    else
+                    catch (Exception error)
                     {
-                        Response.Redirect("UserLogin.aspx");
+                        lblError.Text = error.Message;
                     }
-                }
-                catch (Exception error)
-                {
-                    lblError.Text = error.Message;
                 }
             }
         }
@@ -66,8 +100,17 @@ namespace TheSpotGroup22
         public void fill()
         {
             HttpCookie userCookie = Request.Cookies["UserInfo"];
+            string id;
+            if(userCookie != null)
+            {
+                id = userCookie["customerId"];
+            }
+            else
+            {
+                id = Session["customerId"].ToString();
+            }
 
-            string sql = "SELECT productId, image, productName, productPrice, quantity, totalPrice From tblCart WHERE customerId = '" + int.Parse(userCookie["customerId"]) + "'";
+            string sql = "SELECT productId, productImage, productName, productPrice, productQuantity, totalPrice From TableOrderDetails WHERE customerId = '" + int.Parse(id) + "'";
             comm = new SqlCommand(sql, conn);
 
             comm = new SqlCommand(sql, conn);
@@ -81,8 +124,17 @@ namespace TheSpotGroup22
         public void totalAmount()
         {
             HttpCookie userCookie = Request.Cookies["UserInfo"];
+            string id;
+            if (userCookie != null)
+            {
+                id = userCookie["customerId"];
+            }
+            else
+            {
+                id = Session["customerId"].ToString();
+            }
 
-            string sql = "SELECT SUM(totalPrice) From tblCart WHERE customerId = '" + int.Parse(userCookie["customerId"]) + "'";
+            string sql = "SELECT SUM(totalPrice) From TableOrderDetails WHERE customerId = '" + int.Parse(id) + "'";
             comm = new SqlCommand(sql, conn);
             string amount = comm.ExecuteScalar().ToString();
 
@@ -94,26 +146,27 @@ namespace TheSpotGroup22
             else
             {
                 lblTotalAmount.Text = 0.ToString("c");
+                Session["total"] = lblTotalAmount.Text;
             }
         }
 
         protected void btnCheckOut_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("CustomerOrderInquiry.aspx");
         }
 
         protected void gvSCart_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             int id = Convert.ToInt32(gvSCart.DataKeys[e.RowIndex].Value.ToString());
 
-            conn = new SqlConnection(constr);
+            conn = new SqlConnection(conStr);
             try
             {
                 conn.Open();
                 adapt = new SqlDataAdapter();
                 ds = new DataSet();
 
-                string sql = "DELETE From tblCart WHERE productId = '" + id + "'";
+                string sql = "DELETE From TableOrderDetails WHERE productId = '" + id + "'";
                 comm = new SqlCommand(sql, conn);
                 int t = comm.ExecuteNonQuery();
 

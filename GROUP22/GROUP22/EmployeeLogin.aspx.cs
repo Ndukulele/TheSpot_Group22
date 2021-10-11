@@ -12,7 +12,7 @@ namespace TheSpotGroup22
 {
     public partial class EmployeeLogin : System.Web.UI.Page
     {
-        string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dell\Documents\CMPG 223\TheSpot\TheSpotGroup22\TheSpotGroup22\App_Data\Restaurant.mdf;Integrated Security=True";
+        string conStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|Restaurant.mdf;Integrated Security=True";
         SqlConnection conn;
         SqlCommand comm;
         SqlDataAdapter adapt;
@@ -22,31 +22,32 @@ namespace TheSpotGroup22
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            HttpCookie employeeCookie = Request.Cookies["EmployeeInfo"];
+            //master page control
+            LinkButton linkHome = (LinkButton)Page.Master.FindControl("home");
+            linkHome.Visible = false;
+            LinkButton linkMenu = (LinkButton)Page.Master.FindControl("menu");
+            linkMenu.Visible = false;
+            LinkButton linkProduct = (LinkButton)Page.Master.FindControl("product");
+            linkProduct.Visible = false;
+            LinkButton linkOrder = (LinkButton)Page.Master.FindControl("order");
+            linkOrder.Visible = false;
+            LinkButton linkBook = (LinkButton)Page.Master.FindControl("booking");
+            linkBook.Visible = false;
+            LinkButton linkAccount = (LinkButton)Page.Master.FindControl("account");
+            linkAccount.Visible = false;
+            LinkButton linkReport = (LinkButton)Page.Master.FindControl("report");
+            linkReport.Visible = false;
 
-            Control myHome = Page.Master.FindControl("home");
-            Control myAddPRoduct = Page.Master.FindControl("addProduct");
-            Control myEditMenu = Page.Master.FindControl("editMenu");
-            Control myViewOrders = Page.Master.FindControl("viewOrders");
-            Control myViewBookings = Page.Master.FindControl("viewBookings");
-            Control myCustomerInfo = Page.Master.FindControl("customerInfo");
-            Control myReports = Page.Master.FindControl("reports");
+            LinkButton linkIn = (LinkButton)Page.Master.FindControl("login");
+            linkIn.Visible = false;
+            LinkButton linkUp = (LinkButton)Page.Master.FindControl("signup");
+            linkUp.Visible = true;
 
-            Control btnLogout = Page.Master.FindControl("logOut");
+            LinkButton linkLogout = (LinkButton)Page.Master.FindControl("linkLogout");
+            linkLogout.Visible = false;
+            //
 
-            if (myHome != null && myAddPRoduct != null && myEditMenu != null && myViewOrders != null && myViewBookings != null && myCustomerInfo != null && myReports != null && btnLogout != null)
-            {
-                myHome.Visible = false;
-                myAddPRoduct.Visible = false;
-                myEditMenu.Visible = false;
-                myViewOrders.Visible = false;
-                myViewBookings.Visible = false;
-                myCustomerInfo.Visible = false;
-                myReports.Visible = false;
-
-                btnLogout.Visible = false;
-            }
-
+            HttpCookie employeeCookie = Request.Cookies["EmpInfo"];
             if (!IsPostBack)
             {
                 if (employeeCookie != null)
@@ -66,7 +67,7 @@ namespace TheSpotGroup22
         private void checkInfo()
         {
 
-            conn = new SqlConnection(constr);
+            conn = new SqlConnection(conStr);
             try
             {
                 HttpCookie employeeCookie = new HttpCookie("employeeInfo");
@@ -74,7 +75,7 @@ namespace TheSpotGroup22
                 adapt = new SqlDataAdapter();
                 ds = new DataSet();
 
-                string sql = $"SELECT employeeId,password FROM tblEmployeeDetails WHERE email = '{txtEmail.Text}'";
+                string sql = $"SELECT employeeId,password FROM TableEmployees WHERE email = '{txtEmail.Text}'";
 
                 comm = new SqlCommand(sql, conn);
 

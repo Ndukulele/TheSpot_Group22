@@ -27,7 +27,7 @@
                                     <table>
                                         <tr>
                                             <td>
-                                                <asp:Image ID="image" height="100px" width="100px" runat="server" ImageUrl='<%# Eval("image") %>' />
+                                                <asp:Image ID="image" height="100px" width="100px" runat="server" ImageUrl='<%# Eval("productImage") %>' />
                                             </td>
                                             <td>
                                                 <asp:Label ID="Label1" runat="server" Text="Name: "></asp:Label>&nbsp;

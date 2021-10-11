@@ -15,7 +15,7 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server" style="background-color:violet; " >
+    <form id="form1" runat="server" style="background-color:white; " >
         <div>
             <nav class="navbar navbar-expand-lg navbar-light " ">
                
@@ -23,31 +23,43 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background-color:darkviolet">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background-color:lightgrey">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item active">
-                            <a class="nav-link" href="Home.aspx"> Home </a>
+                            <asp:LinkButton ID="home" runat="server" OnClick="home_Click" ForeColor="Black">Home</asp:LinkButton>
+&nbsp;&nbsp;&nbsp;
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="AddProduct.aspx"> Edit Menu </a>
+                            <asp:LinkButton ID="menu" runat="server" OnClick="menu_Click" ForeColor="Black">Edit menu</asp:LinkButton>
+&nbsp;&nbsp;&nbsp; </li>
+                        <li class="nav-item active">
+                            <asp:LinkButton ID="product" runat="server" OnClick="product_Click" ForeColor="Black">Add products</asp:LinkButton>
+&nbsp;&nbsp;&nbsp; </li>
+                        <li class="nav-item active">
+                            <asp:LinkButton ID="order" runat="server" OnClick="order_Click" ForeColor="Black">Manage orders</asp:LinkButton>
+&nbsp;&nbsp;&nbsp; </li>
+                        <li class="nav-item active">
+                            <asp:LinkButton ID="booking" runat="server" OnClick="booking_Click" ForeColor="Black">Manage bookings</asp:LinkButton>
+&nbsp;&nbsp;&nbsp; </li>
+                        <li class="nav-item active"><asp:LinkButton ID="account" runat="server" OnClick="account_Click" ForeColor="Black">User accounts</asp:LinkButton>
+&nbsp;&nbsp;&nbsp; </li>
+                        <li class="nav-item active">
+                            <asp:LinkButton ID="report" runat="server" OnClick="reports_Click" ForeColor="Black">Reports</asp:LinkButton>
+                        &nbsp;&nbsp;&nbsp;
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="#"> View Product </a>
+                            <asp:LinkButton ID="login" runat="server" OnClick="login_Click" ForeColor="Black">Login</asp:LinkButton>
+                        &nbsp;&nbsp;&nbsp;
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="#"> New Order</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="CustomerInfo">User Account</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Reports</a>
+                            <asp:LinkButton ID="signup" runat="server" OnClick="signup_Click" ForeColor="Black">Sign up</asp:LinkButton>
+                        &nbsp;&nbsp;&nbsp;
                         </li>
                     </ul>
 
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <asp:Linkbutton class="nav-link" ID="logOut" runat="server" > Logout </asp:Linkbutton>
+                            <asp:Linkbutton class="nav-link" ID="linkLogout" runat="server" OnClick="linkLogout_Click" ForeColor="Black" > Logout </asp:Linkbutton>
                         </li>
                         
                     </ul>

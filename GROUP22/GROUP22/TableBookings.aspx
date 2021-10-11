@@ -41,7 +41,7 @@
                     <tr>
                         <td>
                                 <asp:Button ID="btnSubmitBooking" runat="server" Text="Book" BackColor="Lavender"
-                                Style="border: solid 1px #ddd" Height="40px" Width="200px" OnClick="btnSubmitBooking_Click"/>
+                                Style="border: solid 1px #ddd" Height="40px" Width="200px" OnClick="btnSubmitBooking_Click" Enabled="False"/>
                         </td>
                     </tr>
                 </table>

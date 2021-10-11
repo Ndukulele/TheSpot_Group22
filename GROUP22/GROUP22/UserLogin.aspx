@@ -38,6 +38,8 @@
                                     </h2>
                                     <div class="form-group">
                                         <asp:TextBox class="form-control" ID="txtEmail" runat="server" placeholder="Email Address" TextMode="Email"></asp:TextBox>
+                                        <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="txtEmail" ForeColor="#FF3300" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                                        <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="*Required" ForeColor="#FF3300"></asp:RequiredFieldValidator>
                                     </div>
                                     <h2>
 
@@ -48,6 +50,7 @@
                                     </h2>
                                     <div class="form-group">
                                         <asp:TextBox class="form-control" ID="txtPassword" runat="server" placeholder="Password" TextMode="Password"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="rfvPass" runat="server" ControlToValidate="txtPassword" ErrorMessage="*Required" ForeColor="#FF3300"></asp:RequiredFieldValidator>
                                     </div>
                                     <h2>
 

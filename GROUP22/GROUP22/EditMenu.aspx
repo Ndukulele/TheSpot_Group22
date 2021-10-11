@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/EmployeeSite.Master" AutoEventWireup="true" CodeBehind="EditMenu.aspx.cs" Inherits="TheSpotGroup22.EditMenu" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Employee.Master" AutoEventWireup="true" CodeBehind="EditMenu.aspx.cs" Inherits="TheSpotGroup22.EditMenu" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -14,7 +14,7 @@
                 <HeaderStyle HorizontalAlign="Center" />
                 <ItemStyle HorizontalAlign="Center" />
                 </asp:BoundField>
-                <asp:ImageField DataImageUrlField="image" HeaderText="ProductImage" ReadOnly="True">
+                <asp:ImageField DataImageUrlField="productImage" HeaderText="ProductImage" ReadOnly="True">
                     <ControlStyle Height="50px" Width="50px" />
                     <HeaderStyle HorizontalAlign="Center" />
                     <ItemStyle HorizontalAlign="Center" />

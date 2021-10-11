@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/EmployeeSite.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="TheSpotGroup22.Home" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Employee.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="TheSpotGroup22.Home" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -67,19 +67,6 @@
                                   
                         </div>
                         <div class="row">
-                                <div class="col-md-6" style="background-color:gold; text-align:center"">
-                                    <label> Enquiries </label>
-                                    <h2>
-
-                                    </h2>
-                                    <div class="form-group">
-                                        <asp:Label ID="lblEnquiries" runat="server" Text="0"></asp:Label>
-                                    </div>
-                                    <h2>
-
-                                    </h2>
-                                    
-                                </div>
 
                                 <div class="col-md-6" style="background-color:olive; text-align:center">
                                     <label> Bookings</label>

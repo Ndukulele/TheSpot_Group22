@@ -12,7 +12,7 @@ namespace TheSpotGroup22
 {
     public partial class TableBookings : System.Web.UI.Page
     {
-        string constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dell\Documents\CMPG 223\TheSpot\TheSpotGroup22\TheSpotGroup22\App_Data\Restaurant.mdf;Integrated Security=True";
+        string conStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Restaurant.mdf;Integrated Security=True;Connect Timeout=30";
         SqlConnection conn;
         SqlCommand comm;
         SqlDataAdapter adapt;
@@ -21,29 +21,72 @@ namespace TheSpotGroup22
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Control btnSignIn = Page.Master.FindControl("userLogin");
-            Control btnSignUp = Page.Master.FindControl("signUp");
-            Control btnELogin = Page.Master.FindControl("employeeLogin");
-            Control btnESignUp = Page.Master.FindControl("EmployeeRegistraction");
+            //master page control
+            ImageButton imgProfile = (ImageButton)Page.Master.FindControl("imgProfile");
+            imgProfile.Visible = true;
 
-            if (btnSignIn != null && btnSignUp != null && btnELogin != null && btnESignUp != null)
-            {
-                btnSignIn.Visible = false;
-                btnSignUp.Visible = false;
-                btnESignUp.Visible = false;
-                btnELogin.Visible = false;
-            }
+            LinkButton linkMenu = (LinkButton)Page.Master.FindControl("linkMenu");
+            linkMenu.Visible = true;
+            LinkButton linkBook = (LinkButton)Page.Master.FindControl("linkBookTable");
+            linkBook.Visible = false;
+            LinkButton linkBookings = (LinkButton)Page.Master.FindControl("linkBookings");
+            linkBookings.Visible = true;
+            LinkButton linkOrders = (LinkButton)Page.Master.FindControl("linkOrders");
+            linkOrders.Visible = true;
+            LinkButton linkCart = (LinkButton)Page.Master.FindControl("linkCart");
+            linkCart.Visible = false;
+
+            LinkButton linkLogin = (LinkButton)Page.Master.FindControl("linkUserLogin");
+            linkLogin.Visible = false;
+            LinkButton linkSignUp = (LinkButton)Page.Master.FindControl("linkSignUp");
+            linkSignUp.Visible = false;
+            Label linkHello = (Label)Page.Master.FindControl("lblHelloUser");
+            linkHello.Visible = true;
+
+            LinkButton linkLogout = (LinkButton)Page.Master.FindControl("linkLogout");
+            linkLogout.Visible = true;
+
+            LinkButton linkEmpLog = (LinkButton)Page.Master.FindControl("linkEmployeeLogin");
+            linkEmpLog.Visible = false;
+            LinkButton linkEmpReg = (LinkButton)Page.Master.FindControl("linkEmployeeRegistration");
+            linkEmpReg.Visible = false;
+            //
 
             if (!IsPostBack)
             {
                 Calendar1.SelectedDate = DateTime.Now.Date;
-                
+
+                if (Session["customerId"] == null)
+                {
+                    HttpCookie userCookie = Request.Cookies["UserInfo"];
+                    if (userCookie != null)
+                    {
+                        linkHello = (Label)Page.Master.FindControl("lblHelloUser");
+                        linkHello.Visible = true;
+
+                        Session["customerId"] = userCookie["customerId"];
+                        Session["customerName"] = userCookie["customerName"];
+                        linkHello.Text = "Welcome " + Session["customerName"];
+                    }
+                    else
+                    {
+                        Response.Redirect("UserLogin.aspx", false);
+                    }
+                }
+                else
+                {
+                    linkHello = (Label)Page.Master.FindControl("lblHelloUser");
+                    linkHello.Visible = true;
+
+                    linkHello.Text = "Welcome " + Session["customerName"];
+                }
             }
         }
 
         protected void btnCheckAvailability_Click(object sender, EventArgs e)
         {
             findAvaliableTable();
+            btnSubmitBooking.Enabled = true;
             rblTableNum.Visible = true;
         }
 
@@ -53,14 +96,14 @@ namespace TheSpotGroup22
             string selectedTimeIn = ((ddlTimeIn.SelectedItem.ToString()).Substring(1, 5)) + ":00";
             string selectedTimeOut = ((ddlTimeOut.SelectedItem.ToString()).Substring(1, 5)) + ":00";
 
-            conn = new SqlConnection(constr);
+            conn = new SqlConnection(conStr);
             try
             {
                 conn.Open();
                 adapt = new SqlDataAdapter();
                 ds = new DataSet();
 
-                string sql = $"SELECT DISTINCT tableNo from tblBookingDetails where (BookingDate = '" + Calendar1.SelectedDate + "' and ((timeIn between '" + selectedTimeIn + "' and '" + selectedTimeOut + "') or (timeOut between '" + selectedTimeIn + "' and '" + selectedTimeOut + "')))";
+                string sql = $"SELECT DISTINCT tableNo from TableBookTable where (bookingDate = '" + Calendar1.SelectedDate + "' and ((timeIn between '" + selectedTimeIn + "' and '" + selectedTimeOut + "') or (timeOut between '" + selectedTimeIn + "' and '" + selectedTimeOut + "')))";
                 comm = new SqlCommand(sql, conn);
 
                 adapt.SelectCommand = comm;
@@ -105,7 +148,7 @@ namespace TheSpotGroup22
         {
             string sDate = Calendar1.SelectedDate.Year + "-" + Calendar1.SelectedDate.Month + "-" + Calendar1.SelectedDate.Day;
             HttpCookie userCookie = Request.Cookies["UserInfo"];
-            conn = new SqlConnection(constr);
+            conn = new SqlConnection(conStr);
             try
             {
                 conn.Open();
@@ -114,7 +157,7 @@ namespace TheSpotGroup22
 
                 if (userCookie != null)
                 {
-                    string sql = $"INSERT INTO tblBookingDetails(tableNo, customerId, totalPeople, bookingDate, timeIn, timeOut) VALUES(@tableNo, @customerId, @totPeople, @date, @in, @out)";
+                    string sql = $"INSERT INTO TableBookTable(tableNo, customerId, totalPeople, bookingDate, timeIn, timeOut) VALUES(@tableNo, @customerId, @totPeople, @date, @in, @out)";
 
                     comm = new SqlCommand(sql, conn);
                     comm.Parameters.AddWithValue("@tableNo", rblTableNum.SelectedItem.ToString());
